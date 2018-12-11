@@ -7,14 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16C80E50D3E2D54BAD4D3754 /* Pods_SWAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE983D267641F147945DFB33 /* Pods_SWAPITests.framework */; };
 		1D0B907E21B9BD9C002D8793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B907D21B9BD9C002D8793 /* AppDelegate.swift */; };
-		1D0B908021B9BD9C002D8793 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B907F21B9BD9C002D8793 /* ViewController.swift */; };
+		1D0B908021B9BD9C002D8793 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B907F21B9BD9C002D8793 /* LaunchViewController.swift */; };
 		1D0B908321B9BD9C002D8793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0B908121B9BD9C002D8793 /* Main.storyboard */; };
 		1D0B908621B9BD9C002D8793 /* SWAPI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B908421B9BD9C002D8793 /* SWAPI.xcdatamodeld */; };
 		1D0B908821B9BD9E002D8793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0B908721B9BD9E002D8793 /* Assets.xcassets */; };
 		1D0B908B21B9BD9E002D8793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0B908921B9BD9E002D8793 /* LaunchScreen.storyboard */; };
 		1D0B909621B9BD9E002D8793 /* SWAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B909521B9BD9E002D8793 /* SWAPITests.swift */; };
 		1D0B90A121B9BD9E002D8793 /* SWAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B90A021B9BD9E002D8793 /* SWAPIUITests.swift */; };
+		1D0B90AF21B9C0B8002D8793 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B90AE21B9C0B8002D8793 /* MainTableViewController.swift */; };
+		1D0D232821BD8BAF00F6AAD5 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232721BD8BAF00F6AAD5 /* CustomSearchBar.swift */; };
+		1D0D232C21BD983500F6AAD5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */; };
+		1D0D233021BDA8D400F6AAD5 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232F21BDA8D400F6AAD5 /* DataHandler.swift */; };
+		1D0D233221BDB27D00F6AAD5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233121BDB27D00F6AAD5 /* Person.swift */; };
+		1D0D233421BDB54F00F6AAD5 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233321BDB54F00F6AAD5 /* API.swift */; };
+		1D0D233621BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233521BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift */; };
+		1D0D233921BE024C00F6AAD5 /* jsonFilmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233821BE024C00F6AAD5 /* jsonFilmObject.swift */; };
+		1D0D233B21BE8DB500F6AAD5 /* jsonPlanetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233A21BE8DB500F6AAD5 /* jsonPlanetObject.swift */; };
+		1D0D233D21BE928D00F6AAD5 /* jsonSpeciesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233C21BE928D00F6AAD5 /* jsonSpeciesObject.swift */; };
+		1D0D233F21BE948500F6AAD5 /* jsonVehicleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233E21BE948500F6AAD5 /* jsonVehicleObject.swift */; };
+		1D0D234121BE956600F6AAD5 /* jsonStarshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D234021BE956600F6AAD5 /* jsonStarshipObject.swift */; };
+		1D430BAE21B9D9E100EE2B9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */; };
+		1D430BB121BC867900EE2B9A /* Death-Star.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1D430BB021BC821300EE2B9A /* Death-Star.otf */; };
+		1DCBB90921C0766A00787271 /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCBB90821C0766A00787271 /* SWAPI.swift */; };
+		1DF9C62B21BC9FF800E355B3 /* SwapiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9C62A21BC9FF800E355B3 /* SwapiCell.swift */; };
+		5B900686F2EB0A2F188668CD /* Pods_SWAPIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF668FDC559B080424399B10 /* Pods_SWAPIUITests.framework */; };
+		7F8894ADB6D5ABCC7B421C81 /* Pods_SWAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0B1AEBCFEA87453D552520 /* Pods_SWAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +54,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080E215A7C9FE878BEB0B637 /* Pods-SWAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWAPITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWAPITests/Pods-SWAPITests.debug.xcconfig"; sourceTree = "<group>"; };
+		10D03B566393274A9E43C6C1 /* Pods-SWAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWAPITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWAPITests/Pods-SWAPITests.release.xcconfig"; sourceTree = "<group>"; };
 		1D0B907A21B9BD9C002D8793 /* SWAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0B907D21B9BD9C002D8793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1D0B907F21B9BD9C002D8793 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1D0B907F21B9BD9C002D8793 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		1D0B908221B9BD9C002D8793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D0B908521B9BD9C002D8793 /* SWAPI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SWAPI.xcdatamodel; sourceTree = "<group>"; };
 		1D0B908721B9BD9E002D8793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +70,29 @@
 		1D0B909C21B9BD9E002D8793 /* SWAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0B90A021B9BD9E002D8793 /* SWAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIUITests.swift; sourceTree = "<group>"; };
 		1D0B90A221B9BD9E002D8793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D0B90AE21B9C0B8002D8793 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		1D0D232721BD8BAF00F6AAD5 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1D0D232F21BDA8D400F6AAD5 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
+		1D0D233121BDB27D00F6AAD5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		1D0D233321BDB54F00F6AAD5 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		1D0D233521BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonPersonSearchObject.swift; sourceTree = "<group>"; };
+		1D0D233821BE024C00F6AAD5 /* jsonFilmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonFilmObject.swift; sourceTree = "<group>"; };
+		1D0D233A21BE8DB500F6AAD5 /* jsonPlanetObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonPlanetObject.swift; sourceTree = "<group>"; };
+		1D0D233C21BE928D00F6AAD5 /* jsonSpeciesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonSpeciesObject.swift; sourceTree = "<group>"; };
+		1D0D233E21BE948500F6AAD5 /* jsonVehicleObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonVehicleObject.swift; sourceTree = "<group>"; };
+		1D0D234021BE956600F6AAD5 /* jsonStarshipObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonStarshipObject.swift; sourceTree = "<group>"; };
+		1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1D430BB021BC821300EE2B9A /* Death-Star.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Death-Star.otf"; sourceTree = "<group>"; };
+		1DCBB90821C0766A00787271 /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
+		1DF9C62A21BC9FF800E355B3 /* SwapiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiCell.swift; sourceTree = "<group>"; };
+		268A060B791D58132E7368D1 /* Pods-SWAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWAPI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWAPI/Pods-SWAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		A6E602C1786B5AF4041EC2C4 /* Pods-SWAPIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWAPIUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SWAPIUITests/Pods-SWAPIUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE983D267641F147945DFB33 /* Pods_SWAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0E63230EEB6D8AC2477931 /* Pods-SWAPIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWAPIUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWAPIUITests/Pods-SWAPIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE0B1AEBCFEA87453D552520 /* Pods_SWAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2524565854338386CBB9C88 /* Pods-SWAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWAPI.release.xcconfig"; path = "Pods/Target Support Files/Pods-SWAPI/Pods-SWAPI.release.xcconfig"; sourceTree = "<group>"; };
+		DF668FDC559B080424399B10 /* Pods_SWAPIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SWAPIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F8894ADB6D5ABCC7B421C81 /* Pods_SWAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C80E50D3E2D54BAD4D3754 /* Pods_SWAPITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B900686F2EB0A2F188668CD /* Pods_SWAPIUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +130,8 @@
 				1D0B909421B9BD9E002D8793 /* SWAPITests */,
 				1D0B909F21B9BD9E002D8793 /* SWAPIUITests */,
 				1D0B907B21B9BD9C002D8793 /* Products */,
+				233DD5429E06C61C08E499E7 /* Pods */,
+				62C08B91682A54BB412EA34D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +148,11 @@
 		1D0B907C21B9BD9C002D8793 /* SWAPI */ = {
 			isa = PBXGroup;
 			children = (
-				1D0B907D21B9BD9C002D8793 /* AppDelegate.swift */,
-				1D0B907F21B9BD9C002D8793 /* ViewController.swift */,
-				1D0B908121B9BD9C002D8793 /* Main.storyboard */,
-				1D0B908721B9BD9E002D8793 /* Assets.xcassets */,
-				1D0B908921B9BD9E002D8793 /* LaunchScreen.storyboard */,
+				1D0D232421BD87C000F6AAD5 /* Model */,
+				1D430BA821B9C45600EE2B9A /* View */,
+				1D430BA721B9C13600EE2B9A /* Controllers */,
 				1D0B908C21B9BD9E002D8793 /* Info.plist */,
+				1D0B90B121B9C0F6002D8793 /* Supporting Files */,
 				1D0B908421B9BD9C002D8793 /* SWAPI.xcdatamodeld */,
 			);
 			path = SWAPI;
@@ -128,6 +176,95 @@
 			path = SWAPIUITests;
 			sourceTree = "<group>";
 		};
+		1D0B90B121B9C0F6002D8793 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D430BAF21BC81F800EE2B9A /* fonts */,
+				1D0B907D21B9BD9C002D8793 /* AppDelegate.swift */,
+				1D0B908921B9BD9E002D8793 /* LaunchScreen.storyboard */,
+				1D0B908121B9BD9C002D8793 /* Main.storyboard */,
+				1D0B908721B9BD9E002D8793 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1D0D232421BD87C000F6AAD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1D0D233321BDB54F00F6AAD5 /* API.swift */,
+				1DCBB90821C0766A00787271 /* SWAPI.swift */,
+				1D0D233721BE023100F6AAD5 /* jsonObjects */,
+				1D0D233121BDB27D00F6AAD5 /* Person.swift */,
+				1D0D232F21BDA8D400F6AAD5 /* DataHandler.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D0D233721BE023100F6AAD5 /* jsonObjects */ = {
+			isa = PBXGroup;
+			children = (
+				1D0D233521BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift */,
+				1D0D233A21BE8DB500F6AAD5 /* jsonPlanetObject.swift */,
+				1D0D233821BE024C00F6AAD5 /* jsonFilmObject.swift */,
+				1D0D233C21BE928D00F6AAD5 /* jsonSpeciesObject.swift */,
+				1D0D233E21BE948500F6AAD5 /* jsonVehicleObject.swift */,
+				1D0D234021BE956600F6AAD5 /* jsonStarshipObject.swift */,
+			);
+			path = jsonObjects;
+			sourceTree = "<group>";
+		};
+		1D430BA721B9C13600EE2B9A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1D0B907F21B9BD9C002D8793 /* LaunchViewController.swift */,
+				1D0B90AE21B9C0B8002D8793 /* MainTableViewController.swift */,
+				1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */,
+				1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */,
+			);
+			name = Controllers;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		1D430BA821B9C45600EE2B9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1DF9C62A21BC9FF800E355B3 /* SwapiCell.swift */,
+				1D0D232721BD8BAF00F6AAD5 /* CustomSearchBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D430BAF21BC81F800EE2B9A /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1D430BB021BC821300EE2B9A /* Death-Star.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		233DD5429E06C61C08E499E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				268A060B791D58132E7368D1 /* Pods-SWAPI.debug.xcconfig */,
+				D2524565854338386CBB9C88 /* Pods-SWAPI.release.xcconfig */,
+				080E215A7C9FE878BEB0B637 /* Pods-SWAPITests.debug.xcconfig */,
+				10D03B566393274A9E43C6C1 /* Pods-SWAPITests.release.xcconfig */,
+				A6E602C1786B5AF4041EC2C4 /* Pods-SWAPIUITests.debug.xcconfig */,
+				CA0E63230EEB6D8AC2477931 /* Pods-SWAPIUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		62C08B91682A54BB412EA34D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE0B1AEBCFEA87453D552520 /* Pods_SWAPI.framework */,
+				AE983D267641F147945DFB33 /* Pods_SWAPITests.framework */,
+				DF668FDC559B080424399B10 /* Pods_SWAPIUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +272,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D0B90A521B9BD9E002D8793 /* Build configuration list for PBXNativeTarget "SWAPI" */;
 			buildPhases = (
+				092BE5470A43FC514959692F /* [CP] Check Pods Manifest.lock */,
 				1D0B907621B9BD9C002D8793 /* Sources */,
 				1D0B907721B9BD9C002D8793 /* Frameworks */,
 				1D0B907821B9BD9C002D8793 /* Resources */,
+				74B91300F955EA37C96496C5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +291,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D0B90A821B9BD9E002D8793 /* Build configuration list for PBXNativeTarget "SWAPITests" */;
 			buildPhases = (
+				43056BB404987585194BBB7A /* [CP] Check Pods Manifest.lock */,
 				1D0B908D21B9BD9E002D8793 /* Sources */,
 				1D0B908E21B9BD9E002D8793 /* Frameworks */,
 				1D0B908F21B9BD9E002D8793 /* Resources */,
@@ -170,6 +310,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D0B90AB21B9BD9E002D8793 /* Build configuration list for PBXNativeTarget "SWAPIUITests" */;
 			buildPhases = (
+				488F7615B28EDF5927A513C8 /* [CP] Check Pods Manifest.lock */,
 				1D0B909821B9BD9E002D8793 /* Sources */,
 				1D0B909921B9BD9E002D8793 /* Frameworks */,
 				1D0B909A21B9BD9E002D8793 /* Resources */,
@@ -234,6 +375,7 @@
 			files = (
 				1D0B908B21B9BD9E002D8793 /* LaunchScreen.storyboard in Resources */,
 				1D0B908821B9BD9E002D8793 /* Assets.xcassets in Resources */,
+				1D430BB121BC867900EE2B9A /* Death-Star.otf in Resources */,
 				1D0B908321B9BD9C002D8793 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,13 +396,105 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		092BE5470A43FC514959692F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		43056BB404987585194BBB7A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWAPITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		488F7615B28EDF5927A513C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SWAPIUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74B91300F955EA37C96496C5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SWAPI/Pods-SWAPI-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SWAPI/Pods-SWAPI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1D0B907621B9BD9C002D8793 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D0B908021B9BD9C002D8793 /* ViewController.swift in Sources */,
+				1D0D232C21BD983500F6AAD5 /* DetailViewController.swift in Sources */,
+				1D0D232821BD8BAF00F6AAD5 /* CustomSearchBar.swift in Sources */,
+				1D0D233021BDA8D400F6AAD5 /* DataHandler.swift in Sources */,
+				1D0D233221BDB27D00F6AAD5 /* Person.swift in Sources */,
+				1DCBB90921C0766A00787271 /* SWAPI.swift in Sources */,
+				1D0B90AF21B9C0B8002D8793 /* MainTableViewController.swift in Sources */,
+				1D0D234121BE956600F6AAD5 /* jsonStarshipObject.swift in Sources */,
+				1D430BAE21B9D9E100EE2B9A /* SearchViewController.swift in Sources */,
+				1D0D233B21BE8DB500F6AAD5 /* jsonPlanetObject.swift in Sources */,
+				1D0D233F21BE948500F6AAD5 /* jsonVehicleObject.swift in Sources */,
+				1D0D233921BE024C00F6AAD5 /* jsonFilmObject.swift in Sources */,
+				1D0B908021B9BD9C002D8793 /* LaunchViewController.swift in Sources */,
+				1D0D233D21BE928D00F6AAD5 /* jsonSpeciesObject.swift in Sources */,
 				1D0B907E21B9BD9C002D8793 /* AppDelegate.swift in Sources */,
+				1DF9C62B21BC9FF800E355B3 /* SwapiCell.swift in Sources */,
+				1D0D233421BDB54F00F6AAD5 /* API.swift in Sources */,
+				1D0D233621BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift in Sources */,
 				1D0B908621B9BD9C002D8793 /* SWAPI.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +668,7 @@
 		};
 		1D0B90A621B9BD9E002D8793 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 268A060B791D58132E7368D1 /* Pods-SWAPI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -446,12 +681,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mycompany.SWAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		1D0B90A721B9BD9E002D8793 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2524565854338386CBB9C88 /* Pods-SWAPI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,12 +700,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mycompany.SWAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		1D0B90A921B9BD9E002D8793 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 080E215A7C9FE878BEB0B637 /* Pods-SWAPITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +728,7 @@
 		};
 		1D0B90AA21B9BD9E002D8793 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10D03B566393274A9E43C6C1 /* Pods-SWAPITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +750,7 @@
 		};
 		1D0B90AC21B9BD9E002D8793 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6E602C1786B5AF4041EC2C4 /* Pods-SWAPIUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,6 +771,7 @@
 		};
 		1D0B90AD21B9BD9E002D8793 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA0E63230EEB6D8AC2477931 /* Pods-SWAPIUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
