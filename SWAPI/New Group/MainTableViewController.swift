@@ -48,12 +48,11 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let count = personsFromData?.count else { return nil }
-            if section == 0 && count != 0 {
-                return "  Recently searched:"
-            } else {
-                return " No data, use search"
-            }
+        if personsFromData?.count == 0 {
+            return nil
+        } else {
+            return "  Recently searched:"
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,11 +80,20 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let object = personsFromData?[indexPath.row] {
+            guard let count = personsFromData?.count else { print("DELETE Error: personsFromData.count returned nil"); return }
+            guard let object = personsFromData?[indexPath.row] else { print("DELETE Error: personsFromData?[indexPath] returned nil"); return }
+            if count > 1 {
+                    print(count)
+                    DataHandler.removePersonObject(data: object)
+                    personsFromData = DataHandler.fetchPersons()
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    print(count)
+            } else {
+                print(count)
                 DataHandler.removePersonObject(data: object)
-//                personsFromData = DataHandler.fetchPersons()
-                personsFromData?.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                personsFromData = DataHandler.fetchPersons()
+                self.tableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .fade)
+                print(count)
             }
         }
     }
