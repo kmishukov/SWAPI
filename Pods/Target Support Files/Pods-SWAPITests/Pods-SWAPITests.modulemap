@@ -1,6 +1,0 @@
-framework module Pods_SWAPITests {
-  umbrella header "Pods-SWAPITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
