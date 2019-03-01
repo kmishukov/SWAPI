@@ -12,9 +12,10 @@ import CoreData
 class MainTableViewController: UITableViewController {
     
     var personsFromData: [PersonData]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addBannerLabel()
         configureColorTheme()
         configureNavigationBar()
     }
@@ -22,7 +23,9 @@ class MainTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         personsFromData = DataHandler.fetchPersons()
         tableView.reloadData()
-        
+    }
+    
+    func addBannerLabel() {
         let banner = UILabel()
         banner.text = "Здесь могла бы быть ваша реклама"
         banner.textColor = UIColor.swapiYellow
@@ -39,10 +42,10 @@ class MainTableViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.swapiYellow]
         self.navigationController?.navigationBar.backItem?.leftBarButtonItem?.tintColor = UIColor.swapiYellow
     }
-
-    // MARK: - Table view data source
+    
+    // MARK: - TableView Delegates
     override func numberOfSections(in tableView: UITableView) -> Int {
-       return 1
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -52,7 +55,7 @@ class MainTableViewController: UITableViewController {
             return "  Recently searched:"
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let person = personsFromData {
             return person.count
@@ -60,14 +63,14 @@ class MainTableViewController: UITableViewController {
             return 0
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "swapiCell", for: indexPath) as! SwapiCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "swapiCell", for: indexPath) as! SwapiCell
         if let person = personsFromData?[indexPath.row] {
             cell.name.text = person.name
         }
-            cell.contentView.alpha = 0
-            return cell
+        cell.contentView.alpha = 0
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -78,26 +81,14 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let count = personsFromData?.count else { print("DELETE Error: personsFromData.count returned nil"); return }
             guard let object = personsFromData?[indexPath.row] else { print("DELETE Error: personsFromData?[indexPath] returned nil"); return }
-            if count > 1 {
-                    print(count)
-                    DataHandler.removePersonObject(data: object)
-                    personsFromData = DataHandler.fetchPersons()
-                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                    print(count)
-            } else {
-                print(count)
-                DataHandler.removePersonObject(data: object)
-                personsFromData = DataHandler.fetchPersons()
-                self.tableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .fade)
-                print(count)
-            }
+            DataHandler.removePersonObject(data: object)
+            personsFromData = DataHandler.fetchPersons()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
-
-    
+    // Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDataDetail" {
             guard let index = tableView.indexPathForSelectedRow?.row else { print("Prepare ERROR: indexPathForSelectedRow returned nil"); return }
