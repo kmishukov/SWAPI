@@ -17,8 +17,6 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         configureColorTheme()
         configureNavigationBar()
-        personsFromData = DataHandler.fetchPersons()
-        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
