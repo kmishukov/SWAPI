@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol CustomSearchBarDelegate {
+protocol CustomSearchBarDelegate: class {
     func textFieldDidBeginEditing()
     func textFieldDidEndEditing()
     func searchForText(searchText: String)
@@ -18,7 +18,7 @@ protocol CustomSearchBarDelegate {
 
 class CustomSearchBar: UIView, UITextFieldDelegate {
    
-    var delegate: CustomSearchBarDelegate?
+    weak var delegate: CustomSearchBarDelegate?
     let textField = UITextField()
     let cancelBtn = UIButton(type: .system)
     fileprivate var widthConstraint: NSLayoutConstraint?

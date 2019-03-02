@@ -175,10 +175,10 @@
 			isa = PBXGroup;
 			children = (
 				1D0D233321BDB54F00F6AAD5 /* API.swift */,
-				1DCBB90821C0766A00787271 /* SWAPI.swift */,
-				1D0D233721BE023100F6AAD5 /* jsonObjects */,
 				1D0D233121BDB27D00F6AAD5 /* Person.swift */,
 				1D0D232F21BDA8D400F6AAD5 /* DataHandler.swift */,
+				1DCBB90821C0766A00787271 /* SWAPI.swift */,
+				1D0D233721BE023100F6AAD5 /* jsonObjects */,
 			);
 			path = Model;
 			sourceTree = "<group>";
