@@ -1,3 +1,5 @@
+SWAPI.COM Application Test Task
+
 Главный экран MainTableViewConrtoller показывает список «уже просмотренных» персонажей, который наполняется из Core Data. Детальная информация о персонажах из данного списка доступна без интернета.
 
 RightBarButtonItem -> переход на SearchViewController. Сделал кастомный, удовлетворяющий цветовую схему приложения, SearchBar (oh god why). Запрос к серверу (func updateSearchResults(text:)) осуществляется по мере набора символов в строку поиска (searchBar.textField) с использованием функции NSObject.cancelPreviousPerformRequests 
