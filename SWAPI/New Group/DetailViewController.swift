@@ -31,20 +31,25 @@ class DetailViewController: UIViewController {
         self.navigationItem.setRightBarButton(barButton, animated: true)
         
         if let person = personObject {
-            downloadPersonDetails(pobject: person) { p in
-                DispatchQueue.main.async {
-                    self.updateView(p: p, textColor: UIColor.swapiGreen)
-                    DataHandler.addPerson(person: p)
+            downloadPersonDetails(pobject: person) { person in
+                if let p = person {
+                    DispatchQueue.main.async {
+                        self.updateView(p: p, textColor: UIColor.swapiGreen)
+                        DataHandler.addPerson(person: p)
+                        self.activityIndicator.stopAnimating()
+                        UIView.animate(withDuration: 0.5, animations: {
+                            self.label.alpha = 1
+                            self.homeworldLabel.alpha = 1
+                            self.filmsLabel.alpha = 1
+                            self.speciesLabel.alpha = 1
+                            self.vehiclesLabel.alpha = 1
+                            self.starshipsLabel.alpha = 1
+                            self.createEditLabel.alpha = 1
+                        })
+                    }
+                } else {
+                    print("Error Downloading Person Information")
                     self.activityIndicator.stopAnimating()
-                    UIView.animate(withDuration: 0.5, animations: {
-                        self.label.alpha = 1
-                        self.homeworldLabel.alpha = 1
-                        self.filmsLabel.alpha = 1
-                        self.speciesLabel.alpha = 1
-                        self.vehiclesLabel.alpha = 1
-                        self.starshipsLabel.alpha = 1
-                        self.createEditLabel.alpha = 1
-                    })
                 }
             }
         }
@@ -54,7 +59,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func downloadPersonDetails(pobject: jsonPersonSearchObject.PersonObject, completion: @escaping (Person) -> Void ){
+    func downloadPersonDetails(pobject: jsonPersonSearchObject.PersonObject, completion: @escaping (Person?) -> Void ){
         label.alpha = 0
         homeworldLabel.alpha = 0
         filmsLabel.alpha = 0
