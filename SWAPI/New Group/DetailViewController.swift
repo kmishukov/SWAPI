@@ -95,7 +95,7 @@ class DetailViewController: UIViewController {
         }
         filmsLabel.numberOfLines = 0
         if let films = p.films {
-            filmsLabel.text =  "Films: \(films)"
+            filmsLabel.text = films
         } else {
             filmsLabel.text = "Films: error?"
         }
