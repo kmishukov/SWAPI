@@ -88,15 +88,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.textField.resignFirstResponder()
     }
-
-    
-    func textFieldDidBeginEditing() {
-//        print("Begin editing")
-    }
-    
-    func textFieldDidEndEditing() {
-//        print("End editing")
-    }
     
     func cancelBtnPressed(){
         searchResults = nil

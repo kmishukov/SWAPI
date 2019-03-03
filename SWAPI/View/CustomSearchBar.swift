@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol CustomSearchBarDelegate: class {
-    func textFieldDidBeginEditing()
-    func textFieldDidEndEditing()
+//    func textFieldDidBeginEditing()
+//    func textFieldDidEndEditing()
     func searchForText(searchText: String)
     func cancelBtnPressed()
 }
@@ -96,12 +96,12 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         isSearching = true
-        delegate?.textFieldDidBeginEditing()
+//        delegate?.textFieldDidBeginEditing()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         isSearching = false
-        delegate?.textFieldDidEndEditing()
+//        delegate?.textFieldDidEndEditing()
     }
     
     
