@@ -57,6 +57,7 @@ class DataHandler: NSObject {
 }
 
 extension PersonData {
+    
     convenience init(person: Person, context: NSManagedObjectContext) {
         self.init(context: context)
         

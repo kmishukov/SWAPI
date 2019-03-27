@@ -27,10 +27,10 @@ class MainTableViewController: UITableViewController {
     
     func addBannerLabel() {
         let banner = UILabel()
-        banner.text = "Здесь могла бы быть ваша реклама"
+        banner.text = "Made by\n Mishukov Konstantin"
         banner.textColor = UIColor.swapiYellow
         banner.numberOfLines = 0
-        banner.frame = CGRect(x: view.frame.size.width/2 - 100, y: -150, width: 200, height: 50)
+        banner.frame = CGRect(x: view.frame.size.width/2 - 100, y: -(view.frame.size.height * 0.15), width: 200, height: 50)
         banner.textAlignment = .center
         tableView.addSubview(banner)
     }

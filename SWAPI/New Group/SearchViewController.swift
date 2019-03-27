@@ -110,17 +110,17 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.perform(
             #selector(searchForPerson(with:)),
             with: text,
-            afterDelay: 0.3)
+            afterDelay: 0.75)
     }
     
-    @objc func searchForPerson(with: String) {
-        SWAPI.searchPerson(forString: with) { (personObjectArray) in
+    @objc func searchForPerson(with str: String) {
+        SWAPI.searchPerson(forString: str) { (personObjectArray) in
             if let array = personObjectArray {
                 self.searchResults = array
                 self.activityIndicator.stopAnimating()
             } else {
-                let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                let alert = UIAlertController(title: "Error", message: "Could not recieve search results", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 self.activityIndicator.stopAnimating()
             }

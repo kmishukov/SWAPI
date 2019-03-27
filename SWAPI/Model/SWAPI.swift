@@ -16,6 +16,7 @@ class SWAPI {
                 do {
                     let decoder = JSONDecoder()
                     let response = try decoder.decode(jsonPersonSearchObject.self, from: data)
+                    print("Successfully received JSON.")
                     completion(response.results)
                 } catch {
                     print(error)
