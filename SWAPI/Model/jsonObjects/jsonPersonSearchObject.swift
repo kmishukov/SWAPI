@@ -74,6 +74,7 @@ extension SWAPI {
         }
         
         group.enter()
+        
         SWAPI.getSpecieName(url: object.species) { (name) in
             person.species = name
             group.leave()

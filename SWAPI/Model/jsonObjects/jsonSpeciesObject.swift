@@ -14,6 +14,7 @@ class jsonSpecieObject: Codable {
 
 extension SWAPI {
     static func getSpecieName(url: [String], completion: @escaping (_ name: String) -> Void) {
+        guard !url.isEmpty else { completion(""); return }
         var counter = 0, species: String = ""
         let totalSpecies = url.count
         for item in url {

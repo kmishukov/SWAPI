@@ -8,13 +8,19 @@
 
 import UIKit
 import CoreData
+import SnapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainVC = MainTableViewController()
+        let navigation = UINavigationController(rootViewController: mainVC)
+        configureColorTheme()
+        self.window?.rootViewController = navigation
+        self.window?.makeKeyAndVisible()
         return true
     }
 
@@ -59,6 +65,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    private func configureColorTheme(){
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        
+        appearance.backgroundColor = UIColor.swapiTitleBackground
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.swapiYellow]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().tintColor = UIColor.swapiYellow
+    }
 }
 
 extension UIColor {
@@ -91,12 +110,7 @@ extension UITableView {
 }
 
 extension UINavigationController {
-    func configureColorTheme(){
-        self.navigationController?.navigationBar.barTintColor = UIColor.swapiTitleBackground
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.swapiYellow
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.swapiYellow]
-        self.navigationController?.navigationBar.backItem?.leftBarButtonItem?.tintColor = UIColor.swapiYellow
-    }
+
 }
 
 

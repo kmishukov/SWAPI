@@ -16,31 +16,58 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: CustomSearchBar!
-    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    let tableView = UITableView(frame: .zero)
+    let searchBar = CustomSearchBar(frame: .zero)
     
+    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupViews()
         configureView()
     }
     
     func configureView(){
         view.backgroundColor = UIColor.swapiBackground
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.configureColorTheme()
-        searchBar.delegate = self
         
         activityIndicator.color = UIColor.swapiYellow
         let barButton = UIBarButtonItem(customView: activityIndicator)
         self.navigationItem.setRightBarButton(barButton, animated: true)
     }
     
-    func setupView(){
+    func setupViews(){
         self.view.backgroundColor = UIColor.swapiBackground
+        searchBar.delegate = self
+//        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints{
+            $0.top.equalTo(view.snp_topMargin)
+            $0.left.right.equalTo(view)
+            $0.height.equalTo(55)
+        }
+//        NSLayoutConstraint.activate([
+//            searchBar.topAnchor.constraint(equalTo: view.topAnchor),
+//            searchBar.leftAnchor.constraint(equalTo: view.leftAnchor),
+//            searchBar.rightAnchor.constraint(equalTo: view.rightAnchor),
+//            searchBar.heightAnchor.constraint(equalToConstant: 55)
+//        ])
+//
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: "swapiCell")
+        tableView.configureColorTheme()
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.left.right.bottom.equalTo(view)
+            $0.top.equalTo(searchBar.snp.bottom)
+        }
+//        NSLayoutConstraint.activate([
+//            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+//            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
+//        ])
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,11 +105,20 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "swapiCell", for: indexPath) as! SwapiCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "swapiCell", for: indexPath) as! CharacterCell
         if let array = searchResults, array.isEmpty == false {
             cell.name.text = array[indexPath.row].name
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let results = searchResults {
+            let result = results[indexPath.row]
+            let detailVC = DetailViewController()
+            detailVC.personObject = result
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

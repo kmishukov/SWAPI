@@ -9,15 +9,23 @@
 import UIKit
 import CoreData
 
+@objc
 class MainTableViewController: UITableViewController {
     
     var personsFromData: [PersonData]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addBannerLabel()
+        
+        title = "SWAPI"
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: "swapiCell")
+        let button = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+        navigationItem.setRightBarButton(button, animated: false)
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.swapiYellow
+        
+//        addBannerLabel()
         configureColorTheme()
-        configureNavigationBar()
+//        configureNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,14 +56,6 @@ class MainTableViewController: UITableViewController {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if personsFromData?.count == 0 {
-            return nil
-        } else {
-            return "  Recently searched:"
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let person = personsFromData {
             return person.count
@@ -65,7 +65,7 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "swapiCell", for: indexPath) as! SwapiCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "swapiCell", for: indexPath) as! CharacterCell
         if let person = personsFromData?[indexPath.row] {
             cell.name.text = person.name
         }
@@ -96,6 +96,10 @@ class MainTableViewController: UITableViewController {
             let destination = segue.destination as! DetailViewController
             destination.person = Person(data: personData)
         }
+    }
+    
+    @objc func didTapSearch() -> Void {
+        navigationController?.pushViewController(SearchViewController(), animated: true)
     }
     
 }

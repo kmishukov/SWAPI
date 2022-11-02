@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,8 +29,9 @@
 		1D0D234121BE956600F6AAD5 /* jsonStarshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D234021BE956600F6AAD5 /* jsonStarshipObject.swift */; };
 		1D430BAE21B9D9E100EE2B9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */; };
 		1D430BB121BC867900EE2B9A /* Death-Star.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1D430BB021BC821300EE2B9A /* Death-Star.otf */; };
+		1DC7CC2E2911387D00919361 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1DC7CC2D2911387D00919361 /* SnapKit */; };
 		1DCBB90921C0766A00787271 /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCBB90821C0766A00787271 /* SWAPI.swift */; };
-		1DF9C62B21BC9FF800E355B3 /* SwapiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9C62A21BC9FF800E355B3 /* SwapiCell.swift */; };
+		1DF9C62B21BC9FF800E355B3 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9C62A21BC9FF800E355B3 /* CharacterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +81,7 @@
 		1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1D430BB021BC821300EE2B9A /* Death-Star.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Death-Star.otf"; sourceTree = "<group>"; };
 		1DCBB90821C0766A00787271 /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
-		1DF9C62A21BC9FF800E355B3 /* SwapiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapiCell.swift; sourceTree = "<group>"; };
+		1DF9C62A21BC9FF800E355B3 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DC7CC2E2911387D00919361 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +213,7 @@
 		1D430BA821B9C45600EE2B9A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1DF9C62A21BC9FF800E355B3 /* SwapiCell.swift */,
+				1DF9C62A21BC9FF800E355B3 /* CharacterCell.swift */,
 				1D0D232721BD8BAF00F6AAD5 /* CustomSearchBar.swift */,
 			);
 			path = View;
@@ -241,6 +243,9 @@
 			dependencies = (
 			);
 			name = SWAPI;
+			packageProductDependencies = (
+				1DC7CC2D2911387D00919361 /* SnapKit */,
+			);
 			productName = SWAPI;
 			productReference = 1D0B907A21B9BD9C002D8793 /* SWAPI.app */;
 			productType = "com.apple.product-type.application";
@@ -313,6 +318,9 @@
 				Base,
 			);
 			mainGroup = 1D0B907121B9BD9C002D8793;
+			packageReferences = (
+				1DC7CC2C2911387D00919361 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 1D0B907B21B9BD9C002D8793 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -371,7 +379,7 @@
 				1D0B908021B9BD9C002D8793 /* LaunchViewController.swift in Sources */,
 				1D0D233D21BE928D00F6AAD5 /* jsonSpeciesObject.swift in Sources */,
 				1D0B907E21B9BD9C002D8793 /* AppDelegate.swift in Sources */,
-				1DF9C62B21BC9FF800E355B3 /* SwapiCell.swift in Sources */,
+				1DF9C62B21BC9FF800E355B3 /* CharacterCell.swift in Sources */,
 				1D0D233421BDB54F00F6AAD5 /* API.swift in Sources */,
 				1D0D233621BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift in Sources */,
 				1D0B908621B9BD9C002D8793 /* SWAPI.xcdatamodeld in Sources */,
@@ -552,6 +560,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N9MQ3U2TY;
 				INFOPLIST_FILE = SWAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -570,6 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N9MQ3U2TY;
 				INFOPLIST_FILE = SWAPI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -703,6 +713,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1DC7CC2C2911387D00919361 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1DC7CC2D2911387D00919361 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1DC7CC2C2911387D00919361 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		1D0B908421B9BD9C002D8793 /* SWAPI.xcdatamodeld */ = {

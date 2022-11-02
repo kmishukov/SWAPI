@@ -10,7 +10,7 @@ import Foundation
 
 class SWAPI {
     static func searchPerson(forString string: String, completion: @escaping ([jsonPersonSearchObject.PersonObject]?) -> () ) -> () {
-        let url = "https://swapi.co/api/people/?search="
+        let url = "https://swapi.dev/api/people/?search="
         API.networkRequest(url: url, parameter: string) { (recieved) in
             if let data = recieved.data {
                 do {

@@ -10,8 +10,8 @@ import UIKit
 
 class LaunchViewController: UIViewController {
 
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var logoCenterYcon: NSLayoutConstraint!
+//    @IBOutlet weak var logoImage: UIImageView!
+//    @IBOutlet weak var logoCenterYcon: NSLayoutConstraint!
     let highTitle = UILabel()
     let lowTitle = UILabel()
     fileprivate var highConstraint: NSLayoutConstraint?
@@ -27,7 +27,9 @@ class LaunchViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fadeInTitles()
+//        fadeInTitles()
+        let nc = UINavigationController(rootViewController: MainTableViewController())
+        self.present(nc, animated: true)
     }
     
     func configureView(){
@@ -36,8 +38,8 @@ class LaunchViewController: UIViewController {
         highTitle.font = UIFont(name: "DeathStar", size: 40)
         highTitle.textColor = UIColor.swapiYellow
         view.addSubview(highTitle)
-        highTitle.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor, constant: -150).isActive = true
-        highConstraint = highTitle.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor, constant: -400)
+//        highTitle.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor, constant: -150).isActive = true
+//        highConstraint = highTitle.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor, constant: -400)
         highConstraint?.isActive = true
         highTitle.alpha = 1
         
@@ -48,8 +50,8 @@ class LaunchViewController: UIViewController {
         lowTitle.font = UIFont(name: "DeathStar", size: 40)
         lowTitle.textColor = UIColor.swapiYellow
         view.addSubview(lowTitle)
-        lowTitle.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor, constant: 180).isActive = true
-        lowConstraint = lowTitle.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor, constant: 400)
+//        lowTitle.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor, constant: 180).isActive = true
+//        lowConstraint = lowTitle.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor, constant: 400)
         lowConstraint?.isActive = true
         lowTitle.alpha = 1
     }
@@ -70,10 +72,12 @@ class LaunchViewController: UIViewController {
             self.view.layoutIfNeeded()
         }) { (true) in
             UIView.animate(withDuration: 0.5, animations: {
-                self.logoCenterYcon.constant = -800
+//                self.logoCenterYcon.constant = -800
                 self.view.layoutIfNeeded()
             }, completion: { (true) in
-                self.performSegue(withIdentifier: "launch", sender: self)
+//                self.performSegue(withIdentifier: "launch", sender: self)
+                let nc = UINavigationController(rootViewController: MainTableViewController())
+                self.present(nc, animated: true)
             })
         }
     }

@@ -41,8 +41,12 @@ class HTTPRequest {
         let requestURL = URL(string: urlString)
         print("URLRequest: \(urlString)")
         let request = NSMutableURLRequest(url: requestURL!)
-        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForResource = 10
+        config.timeoutIntervalForRequest = 10
+        let task = URLSession(configuration: config).dataTask(with: request as URLRequest) { (data, response, error) in
             DispatchQueue.main.async(execute: {
+                print("URLRequest: \(urlString) end")
                 if error != nil {
                     print("Error -> \(String(describing: error))")
                     completionHandler(nil,nil,error)

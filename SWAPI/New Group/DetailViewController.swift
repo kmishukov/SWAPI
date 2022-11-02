@@ -9,15 +9,17 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+
+    // Views
+    private let nameLabel = UILabel(frame: .zero)
+    private let homeworldLabel = UILabel(frame: .zero)
+    private let filmsLabel = UILabel(frame: .zero)
+    private let speciesLabel = UILabel(frame: .zero)
+    private let vehiclesLabel = UILabel(frame: .zero)
+    private let starshipsLabel = UILabel(frame: .zero)
+    private let createEditLabel = UILabel(frame: .zero)
     
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var homeworldLabel: UILabel!
-    @IBOutlet weak var filmsLabel: UILabel!
-    @IBOutlet weak var speciesLabel: UILabel!
-    @IBOutlet weak var vehiclesLabel: UILabel!
-    @IBOutlet weak var starshipsLabel: UILabel!
-    @IBOutlet weak var createEditLabel: UILabel!
-    
+    // Data
     var person: Person?
     var personObject: jsonPersonSearchObject.PersonObject?
     let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -25,6 +27,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.swapiBackground
+        
+        setupViews()
         
         activityIndicator.color = UIColor.swapiGreen
         let barButton = UIBarButtonItem(customView: activityIndicator)
@@ -38,7 +42,7 @@ class DetailViewController: UIViewController {
                         DataHandler.addPerson(person: p)
                         self.activityIndicator.stopAnimating()
                         UIView.animate(withDuration: 0.5, animations: {
-                            self.label.alpha = 1
+                            self.nameLabel.alpha = 1
                             self.homeworldLabel.alpha = 1
                             self.filmsLabel.alpha = 1
                             self.speciesLabel.alpha = 1
@@ -59,8 +63,16 @@ class DetailViewController: UIViewController {
         }
     }
     
+    private func setupViews() {
+        view.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints {
+            $0.top.equalTo(view.snp.topMargin).inset(5)
+            $0.left.right.equalTo(view)
+        }
+    }
+    
     func downloadPersonDetails(pobject: jsonPersonSearchObject.PersonObject, completion: @escaping (Person?) -> Void ){
-        label.alpha = 0
+        nameLabel.alpha = 0
         homeworldLabel.alpha = 0
         filmsLabel.alpha = 0
         speciesLabel.alpha = 0
@@ -77,7 +89,7 @@ class DetailViewController: UIViewController {
    
     func updateView(p: Person, textColor: UIColor) {
         
-        label.textColor = textColor
+        nameLabel.textColor = textColor
         homeworldLabel.textColor = textColor
         filmsLabel.textColor = textColor
         speciesLabel.textColor = textColor
@@ -85,8 +97,8 @@ class DetailViewController: UIViewController {
         starshipsLabel.textColor = textColor
         createEditLabel.textColor = textColor
         
-        label.numberOfLines = 0
-        label.text = "Name: \(p.name)\nHeight: \(p.height)\nMass: \(p.mass)\nHair color: \(p.hair_color)\nSkin color: \(p.skin_color)\nEye color: \(p.eye_color)\nBirth year: \(p.birth_year)\nGender: \(p.gender)"
+        nameLabel.numberOfLines = 0
+        nameLabel.text = "Name: \(p.name)\nHeight: \(p.height)\nMass: \(p.mass)\nHair color: \(p.hair_color)\nSkin color: \(p.skin_color)\nEye color: \(p.eye_color)\nBirth year: \(p.birth_year)\nGender: \(p.gender)"
         homeworldLabel.numberOfLines = 0
         if let homeworld = p.homeworld {
             homeworldLabel.text =  "Homeworld: \(homeworld)"
@@ -119,6 +131,5 @@ class DetailViewController: UIViewController {
         }
         createEditLabel.numberOfLines = 0
         createEditLabel.text = "Created: \(p.created)\nEdited: \(p.edited)\nURL: \(p.url)"
-    
     }
 }
