@@ -27,6 +27,7 @@
 		1D0D233D21BE928D00F6AAD5 /* jsonSpeciesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233C21BE928D00F6AAD5 /* jsonSpeciesObject.swift */; };
 		1D0D233F21BE948500F6AAD5 /* jsonVehicleObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233E21BE948500F6AAD5 /* jsonVehicleObject.swift */; };
 		1D0D234121BE956600F6AAD5 /* jsonStarshipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D234021BE956600F6AAD5 /* jsonStarshipObject.swift */; };
+		1D3B3AD929140D5B009BD6A4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3B3AD829140D5B009BD6A4 /* BaseViewController.swift */; };
 		1D430BAE21B9D9E100EE2B9A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */; };
 		1D430BB121BC867900EE2B9A /* Death-Star.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1D430BB021BC821300EE2B9A /* Death-Star.otf */; };
 		1DC7CC2E2911387D00919361 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1DC7CC2D2911387D00919361 /* SnapKit */; };
@@ -78,6 +79,7 @@
 		1D0D233C21BE928D00F6AAD5 /* jsonSpeciesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonSpeciesObject.swift; sourceTree = "<group>"; };
 		1D0D233E21BE948500F6AAD5 /* jsonVehicleObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonVehicleObject.swift; sourceTree = "<group>"; };
 		1D0D234021BE956600F6AAD5 /* jsonStarshipObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonStarshipObject.swift; sourceTree = "<group>"; };
+		1D3B3AD829140D5B009BD6A4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1D430BB021BC821300EE2B9A /* Death-Star.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Death-Star.otf"; sourceTree = "<group>"; };
 		1DCBB90821C0766A00787271 /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				1D0B90AE21B9C0B8002D8793 /* MainTableViewController.swift */,
 				1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */,
 				1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */,
+				1D3B3AD829140D5B009BD6A4 /* BaseViewController.swift */,
 			);
 			name = Controllers;
 			path = "New Group";
@@ -369,6 +372,7 @@
 				1D0D232821BD8BAF00F6AAD5 /* CustomSearchBar.swift in Sources */,
 				1D0D233021BDA8D400F6AAD5 /* DataHandler.swift in Sources */,
 				1D0D233221BDB27D00F6AAD5 /* Person.swift in Sources */,
+				1D3B3AD929140D5B009BD6A4 /* BaseViewController.swift in Sources */,
 				1DCBB90921C0766A00787271 /* SWAPI.swift in Sources */,
 				1D0B90AF21B9C0B8002D8793 /* MainTableViewController.swift in Sources */,
 				1D0D234121BE956600F6AAD5 /* jsonStarshipObject.swift in Sources */,

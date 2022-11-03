@@ -11,6 +11,8 @@ import UIKit
 class CharacterCell: UITableViewCell {
     let name = UILabel(frame: .zero)
     
+    static let identifier = "CharacterCell"
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
