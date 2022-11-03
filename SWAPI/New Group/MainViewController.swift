@@ -10,13 +10,12 @@ import UIKit
 import CoreData
 
 class MainViewController: BaseViewController {
-    var personsFromData: [PersonData]?
     
     private var resultsController: NSFetchedResultsController<PersonData> = {
-        let request = NSFetchRequest<PersonData>(entityName: "PersonData")
+        let request = NSFetchRequest<PersonData>(entityName: DataController.personEntity)
         let orderSort = NSSortDescriptor(key: "name", ascending: true)
         request.sortDescriptors = [orderSort]
-        return NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataHandler.getContext(), sectionNameKeyPath: nil, cacheName: nil)
+        return NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
     }()
     
     // MARK: Init
@@ -97,7 +96,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            DataHandler.removePersonObject(data: resultsController.object(at: indexPath))
+            DataController.removePersonObject(data: resultsController.object(at: indexPath))
         }
     }
     

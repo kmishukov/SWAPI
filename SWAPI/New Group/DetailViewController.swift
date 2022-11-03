@@ -56,7 +56,7 @@ class DetailViewController: UIViewController {
                 if let p = person {
                     DispatchQueue.main.async {
                         self.updateView(p: p, textColor: UIColor.swapiGreen)
-                        DataHandler.addPerson(person: p)
+                        DataController.addPerson(person: p)
                         self.activityIndicator.stopAnimating()
                         UIView.animate(withDuration: 0.5, animations: {
                             self.nameLabel.alpha = 1

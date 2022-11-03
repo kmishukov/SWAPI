@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        DataHandler.save()
+        DataController.save()
     }
 
     // MARK: - CoreData stack

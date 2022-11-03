@@ -1,5 +1,5 @@
 //
-//  DataHandler.swift
+//  DataController.swift
 //  SWAPI
 //
 //  Created by Konstantin Mishukov on 09/12/2018.
@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 
-class DataHandler: NSObject {
+class DataController: NSObject {
+    static let personEntity = "PersonData"
+    
     static func getContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -18,7 +20,7 @@ class DataHandler: NSObject {
     class func addPerson(person: Person){
         let context = getContext()
         let name = person.name
-        let personFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PersonData")
+        let personFetch = NSFetchRequest<NSFetchRequestResult>(entityName: DataController.personEntity)
         personFetch.predicate = NSPredicate(format: "name = %@", "\(name)")
         do {
             let persons = try! context.fetch(personFetch)
