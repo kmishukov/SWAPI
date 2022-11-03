@@ -1,5 +1,5 @@
 //
-//  API.swift
+//  APIManager.swift
 //  SWAPI
 //
 //  Created by Konstantin Mishukov on 09/12/2018.
@@ -15,7 +15,7 @@ public struct apiReturn {
 }
 
 
-class API {
+class APIManager {
     static func networkRequest(url: String, parameter: String?, completion: @escaping (apiReturn) -> ()) {
         var recieved = apiReturn()
         HTTPRequest.request(url: url, parameter: parameter) { (data, response, error) in

@@ -18,7 +18,7 @@ extension SWAPI {
         var counter = 0, species: String = ""
         let totalSpecies = url.count
         for item in url {
-            API.networkRequest(url: item, parameter: nil) { (recieved) in
+            APIManager.networkRequest(url: item, parameter: nil) { (recieved) in
                 do {
                     counter += 1
                     let decoder = JSONDecoder()

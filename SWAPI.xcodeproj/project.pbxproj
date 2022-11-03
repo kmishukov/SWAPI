@@ -20,7 +20,7 @@
 		1D0D232C21BD983500F6AAD5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */; };
 		1D0D233021BDA8D400F6AAD5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232F21BDA8D400F6AAD5 /* DataController.swift */; };
 		1D0D233221BDB27D00F6AAD5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233121BDB27D00F6AAD5 /* Person.swift */; };
-		1D0D233421BDB54F00F6AAD5 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233321BDB54F00F6AAD5 /* API.swift */; };
+		1D0D233421BDB54F00F6AAD5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233321BDB54F00F6AAD5 /* APIManager.swift */; };
 		1D0D233621BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233521BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift */; };
 		1D0D233921BE024C00F6AAD5 /* jsonFilmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233821BE024C00F6AAD5 /* jsonFilmObject.swift */; };
 		1D0D233B21BE8DB500F6AAD5 /* jsonPlanetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D233A21BE8DB500F6AAD5 /* jsonPlanetObject.swift */; };
@@ -72,7 +72,7 @@
 		1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1D0D232F21BDA8D400F6AAD5 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		1D0D233121BDB27D00F6AAD5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		1D0D233321BDB54F00F6AAD5 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		1D0D233321BDB54F00F6AAD5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		1D0D233521BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonPersonSearchObject.swift; sourceTree = "<group>"; };
 		1D0D233821BE024C00F6AAD5 /* jsonFilmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonFilmObject.swift; sourceTree = "<group>"; };
 		1D0D233A21BE8DB500F6AAD5 /* jsonPlanetObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonPlanetObject.swift; sourceTree = "<group>"; };
@@ -178,7 +178,7 @@
 		1D0D232421BD87C000F6AAD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1D0D233321BDB54F00F6AAD5 /* API.swift */,
+				1D0D233321BDB54F00F6AAD5 /* APIManager.swift */,
 				1D0D233121BDB27D00F6AAD5 /* Person.swift */,
 				1D0D232F21BDA8D400F6AAD5 /* DataController.swift */,
 				1DCBB90821C0766A00787271 /* SWAPI.swift */,
@@ -384,7 +384,7 @@
 				1D0D233D21BE928D00F6AAD5 /* jsonSpeciesObject.swift in Sources */,
 				1D0B907E21B9BD9C002D8793 /* AppDelegate.swift in Sources */,
 				1DF9C62B21BC9FF800E355B3 /* CharacterCell.swift in Sources */,
-				1D0D233421BDB54F00F6AAD5 /* API.swift in Sources */,
+				1D0D233421BDB54F00F6AAD5 /* APIManager.swift in Sources */,
 				1D0D233621BDCAEE00F6AAD5 /* jsonPersonSearchObject.swift in Sources */,
 				1D0B908621B9BD9C002D8793 /* SWAPI.xcdatamodeld in Sources */,
 			);

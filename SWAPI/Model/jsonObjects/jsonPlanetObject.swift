@@ -14,7 +14,7 @@ class jsonPlanetObject: Codable {
 
 extension SWAPI {
     static func getPlanetName(url: String, completion: @escaping (_ name: String) -> Void) {
-        API.networkRequest(url: url, parameter: nil) { (recieved) in
+        APIManager.networkRequest(url: url, parameter: nil) { (recieved) in
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(jsonPlanetObject.self, from: recieved.data!)

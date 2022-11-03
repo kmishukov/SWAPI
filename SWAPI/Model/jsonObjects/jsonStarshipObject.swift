@@ -17,7 +17,7 @@ extension SWAPI {
         var starships = "", counter = 0
         let totalStarships = urlArray.count
         for url in urlArray {
-            API.networkRequest(url: url, parameter: nil) { (recieved) in
+            APIManager.networkRequest(url: url, parameter: nil) { (recieved) in
                 do {
                     counter += 1
                     let decoder = JSONDecoder()

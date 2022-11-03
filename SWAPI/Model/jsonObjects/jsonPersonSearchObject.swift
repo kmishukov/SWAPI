@@ -24,39 +24,18 @@ struct jsonPersonSearchObject: Codable {
         var birth_year: String
         var gender: String
         var homeworld: String
-        var filmUrls: [String]
-        var film: String?
+        var films: [String]
         var species: [String]
         var vehicles: [String]
         var starships: [String]
         var created: String
         var edited: String
         var url: String
-        
-        private enum CodingKeys: String, CodingKey {
-            case name = "name"
-            case height = "height"
-            case mass = "mass"
-            case hair_color = "hair_color"
-            case skin_color = "skin_color"
-            case eye_color = "eye_color"
-            case birth_year = "birth_year"
-            case gender = "gender"
-            case homeworld = "homeworld"
-            case filmUrls = "films"
-            case species = "species"
-            case vehicles = "vehicles"
-            case starships = "starships"
-            case created = "created"
-            case edited = "edited"
-            case url = "url"
-        }
     }
 }
 
 extension SWAPI {
     static func downloadPersonDetails(object: jsonPersonSearchObject.PersonObject) -> Person {
-        
         let group = DispatchGroup()
         var person = Person(object: object)
  
@@ -67,7 +46,7 @@ extension SWAPI {
         }
 
         group.enter()
-        SWAPI.getFilmTitle(url: object.filmUrls) { (films) in
+        SWAPI.getFilmTitle(url: object.films) { (films) in
             person.films = films
             group.leave()
         }

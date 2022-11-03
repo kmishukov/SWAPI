@@ -30,7 +30,7 @@ extension SWAPI {
         var films: String = "", counter = 0
         let totalNames = url.count
         for item in url {
-            API.networkRequest(url: item, parameter: nil) { (recieved) in
+            APIManager.networkRequest(url: item, parameter: nil) { (recieved) in
                 guard recieved.error == nil else { return }
                 do {
                     counter += 1
