@@ -62,8 +62,8 @@ extension SWAPI {
         var person = Person(object: object)
  
         group.enter()
-        SWAPI.getPlanetName(url: object.homeworld) { name in
-            person.homeworld = name
+        SWAPI.getPlanetName(url: object.homeworld) { homeworld in
+            person.homeworld = homeworld
             group.leave()
         }
 
@@ -74,7 +74,6 @@ extension SWAPI {
         }
         
         group.enter()
-        
         SWAPI.getSpecieName(url: object.species) { (name) in
             person.species = name
             group.leave()

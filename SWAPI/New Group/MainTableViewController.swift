@@ -88,18 +88,13 @@ class MainTableViewController: UITableViewController {
         }
     }
     
-    // Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDataDetail" {
-            guard let index = tableView.indexPathForSelectedRow?.row else { print("Prepare ERROR: indexPathForSelectedRow returned nil"); return }
-            guard let personData = personsFromData?[index] else { print("Prepare ERROR: personsFromData[index] returned nil"); return }
-            let destination = segue.destination as! DetailViewController
-            destination.person = Person(data: personData)
-        }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let personData = personsFromData?[indexPath.row] else { print("Prepare ERROR: personsFromData[index] returned nil"); return }
+        let detailVC = DetailViewController(person: Person(data: personData))
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     @objc func didTapSearch() -> Void {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
-    
 }

@@ -115,7 +115,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let results = searchResults {
             let result = results[indexPath.row]
-            let detailVC = DetailViewController()
+            let detailVC = DetailViewController(personObject: result)
             detailVC.personObject = result
             navigationController?.pushViewController(detailVC, animated: true)
         }

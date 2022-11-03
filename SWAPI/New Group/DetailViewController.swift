@@ -20,22 +20,39 @@ class DetailViewController: UIViewController {
     private let createEditLabel = UILabel(frame: .zero)
     
     // Data
-    var person: Person?
-    var personObject: jsonPersonSearchObject.PersonObject?
-    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    var person: Person? // Это для дейтела уже сохраненных
+    var personObject: jsonPersonSearchObject.PersonObject? // Это для лоада
+    let activityIndicator = UIActivityIndicatorView(frame: .zero)
+    
+    init() {
+        person = nil
+        personObject = nil
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init(person: Person) {
+        self.init()
+        self.person = person
+        self.personObject = nil
+    }
+    
+    convenience init(personObject: jsonPersonSearchObject.PersonObject) {
+        self.init()
+        self.person = nil
+        self.personObject = personObject
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.swapiBackground
-        
         setupViews()
         
-        activityIndicator.color = UIColor.swapiGreen
-        let barButton = UIBarButtonItem(customView: activityIndicator)
-        self.navigationItem.setRightBarButton(barButton, animated: true)
-        
-        if let person = personObject {
-            downloadPersonDetails(pobject: person) { person in
+        if let personObject = personObject {
+            downloadPersonDetails(pobject: personObject) { person in
                 if let p = person {
                     DispatchQueue.main.async {
                         self.updateView(p: p, textColor: UIColor.swapiGreen)
@@ -56,9 +73,7 @@ class DetailViewController: UIViewController {
                     self.activityIndicator.stopAnimating()
                 }
             }
-        }
-        
-        if let person = person {
+        } else if let person = person {
             updateView(p: person, textColor: UIColor.swapiYellow)
         }
     }
@@ -69,6 +84,44 @@ class DetailViewController: UIViewController {
             $0.top.equalTo(view.snp.topMargin).inset(5)
             $0.left.right.equalTo(view)
         }
+        
+        view.addSubview(homeworldLabel)
+        homeworldLabel.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom)
+            $0.left.right.equalTo(view)
+        }
+        
+        view.addSubview(filmsLabel)
+        filmsLabel.snp.makeConstraints {
+            $0.top.equalTo(homeworldLabel.snp.bottom)
+            $0.left.right.equalTo(view)
+        }
+        
+        view.addSubview(speciesLabel)
+        speciesLabel.snp.makeConstraints {
+            $0.top.equalTo(filmsLabel.snp.bottom)
+            $0.left.right.equalTo(view)
+        }
+        
+        view.addSubview(starshipsLabel)
+        starshipsLabel.snp.makeConstraints {
+            $0.top.equalTo(speciesLabel.snp.bottom)
+            $0.left.right.equalTo(view)
+        }
+        
+        view.addSubview(createEditLabel)
+        createEditLabel.snp.makeConstraints {
+            $0.top.equalTo(starshipsLabel.snp.bottom)
+            $0.left.right.equalTo(view)
+        }
+        
+        activityIndicator.snp.makeConstraints {
+            $0.size.equalTo(CGSize(width: 20, height: 20))
+        }
+        activityIndicator.color = UIColor.swapiGreen
+        let barButton = UIBarButtonItem(customView: activityIndicator)
+        self.navigationItem.setRightBarButton(barButton, animated: true)
+
     }
     
     func downloadPersonDetails(pobject: jsonPersonSearchObject.PersonObject, completion: @escaping (Person?) -> Void ){
