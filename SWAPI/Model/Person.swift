@@ -26,7 +26,7 @@ struct Person {
     var edited: String
     var url: String
     
-    init(object: jsonPersonSearchObject.PersonObject ) {
+    init(object: SearchPersonResult.Person ) {
         self.name = object.name
         self.height = object.height
         self.mass = object.mass

@@ -1,5 +1,5 @@
 //
-//  jsonPlanetObject.swift
+//  PlanetResult.swift
 //  SWAPI
 //
 //  Created by Konstantin Mishukov on 10/12/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class jsonPlanetObject: Codable {
+class PlanetResult: Codable {
     var name: String
 }
 
@@ -17,7 +17,7 @@ extension SWAPI {
         APIManager.networkRequest(url: url, parameter: nil) { (recieved) in
             do {
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(jsonPlanetObject.self, from: recieved.data!)
+                let response = try decoder.decode(PlanetResult.self, from: recieved.data!)
                 let name = response.name
                 completion(name)
             } catch {

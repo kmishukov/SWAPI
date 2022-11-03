@@ -17,7 +17,7 @@ class DataController: NSObject {
         return appDelegate.persistentContainer.viewContext
     }
     
-    static func addPerson(person: Person){
+    static func savePerson(person: Person){
         let context = getContext()
         let name = person.name
         let personFetch = NSFetchRequest<NSFetchRequestResult>(entityName: DataController.personEntity)

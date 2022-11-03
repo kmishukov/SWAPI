@@ -1,5 +1,5 @@
 //
-//  jsonPersonSearchObject.swift
+//  SearchResult.swift
 //  SWAPI
 //
 //  Created by Konstantin Mishukov on 10/12/2018.
@@ -8,34 +8,8 @@
 
 import Foundation
 
-struct jsonPersonSearchObject: Codable {
-    var count: Int
-    var next: String?
-    var previous: String?
-    var results: [PersonObject]?
-    
-    struct PersonObject: Codable {
-        var name: String
-        var height: String
-        var mass: String
-        var hair_color: String
-        var skin_color: String
-        var eye_color: String
-        var birth_year: String
-        var gender: String
-        var homeworld: String
-        var films: [String]
-        var species: [String]
-        var vehicles: [String]
-        var starships: [String]
-        var created: String
-        var edited: String
-        var url: String
-    }
-}
-
 extension SWAPI {
-    static func downloadPersonDetails(object: jsonPersonSearchObject.PersonObject) -> Person {
+    static func downloadPersonDetails(object: SearchPersonResult.Person) -> Person {
         let group = DispatchGroup()
         var person = Person(object: object)
  

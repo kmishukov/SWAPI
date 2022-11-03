@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     
     // Data
     var person: Person? // Это для дейтела уже сохраненных
-    var personObject: jsonPersonSearchObject.PersonObject? // Это для лоада
+    var personObject: SearchPersonResult.Person? // Это для лоада
     let activityIndicator = UIActivityIndicatorView(frame: .zero)
     
     init() {
@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
         self.personObject = nil
     }
     
-    convenience init(personObject: jsonPersonSearchObject.PersonObject) {
+    convenience init(personObject: SearchPersonResult.Person) {
         self.init()
         self.person = nil
         self.personObject = personObject
@@ -53,24 +53,28 @@ class DetailViewController: UIViewController {
         
         if let personObject = personObject {
             downloadPersonDetails(pobject: personObject) { person in
-                if let p = person {
-                    DispatchQueue.main.async {
-                        self.updateView(p: p, textColor: UIColor.swapiGreen)
-                        DataController.addPerson(person: p)
-                        self.activityIndicator.stopAnimating()
-                        UIView.animate(withDuration: 0.5, animations: {
-                            self.nameLabel.alpha = 1
-                            self.homeworldLabel.alpha = 1
-                            self.filmsLabel.alpha = 1
-                            self.speciesLabel.alpha = 1
-                            self.vehiclesLabel.alpha = 1
-                            self.starshipsLabel.alpha = 1
-                            self.createEditLabel.alpha = 1
-                        })
-                    }
-                } else {
-                    print("Error Downloading Person Information")
+                DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
+                }
+                guard let person = person else {
+                    // TODO: Alert
+                    return
+                }
+                DispatchQueue.global(qos: .background).async {
+                    DataController.savePerson(person: person)
+                }
+                DispatchQueue.main.async {
+                    self.updateView(p: person, textColor: UIColor.swapiGreen)
+                    self.activityIndicator.stopAnimating()
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.nameLabel.alpha = 1
+                        self.homeworldLabel.alpha = 1
+                        self.filmsLabel.alpha = 1
+                        self.speciesLabel.alpha = 1
+                        self.vehiclesLabel.alpha = 1
+                        self.starshipsLabel.alpha = 1
+                        self.createEditLabel.alpha = 1
+                    })
                 }
             }
         } else if let person = person {
@@ -124,7 +128,7 @@ class DetailViewController: UIViewController {
 
     }
     
-    func downloadPersonDetails(pobject: jsonPersonSearchObject.PersonObject, completion: @escaping (Person?) -> Void ){
+    func downloadPersonDetails(pobject: SearchPersonResult.Person, completion: @escaping (Person?) -> Void ){
         nameLabel.alpha = 0
         homeworldLabel.alpha = 0
         filmsLabel.alpha = 0

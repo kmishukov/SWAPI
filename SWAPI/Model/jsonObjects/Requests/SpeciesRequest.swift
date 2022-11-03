@@ -8,7 +8,7 @@
 
 import Foundation
 
-class jsonSpecieObject: Codable {
+class SpeciesResult: Codable {
     var name: String
 }
 
@@ -22,7 +22,7 @@ extension SWAPI {
                 do {
                     counter += 1
                     let decoder = JSONDecoder()
-                    let response = try decoder.decode(jsonSpecieObject.self, from: recieved.data!)
+                    let response = try decoder.decode(SpeciesResult.self, from: recieved.data!)
                     if species == "" {
                         species = "Species: \(response.name)"
                     } else {

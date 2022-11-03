@@ -12,8 +12,9 @@ import UIKit
 protocol CustomSearchBarDelegate: class {
 //    func textFieldDidBeginEditing()
 //    func textFieldDidEndEditing()
-    func searchForText(searchText: String)
-    func cancelBtnPressed()
+    func textDidChange(searchBar: CustomSearchBar, text: String)
+    
+    func cancelButtonPressed(on searchBar: CustomSearchBar)
 }
 
 class CustomSearchBar: UIView, UITextFieldDelegate {
@@ -84,8 +85,14 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
         widthConstraint?.isActive = true
         textField.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
+        if let clearButton = textField.value(forKey: "_clearButton") as? UIButton {
+            let templateImage = clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
+            clearButton.setImage(templateImage, for: .normal)
+            clearButton.tintColor = .swapiYellow
+        }
+        
         cancelBtn.translatesAutoresizingMaskIntoConstraints = false
-        cancelBtn.addTarget(self, action: #selector(cancelBtnPressed), for: .touchUpInside)
+        cancelBtn.addTarget(self, action: #selector(cancelButtonPressed), for: .touchUpInside)
         cancelBtn.setTitle("Cancel", for: .normal)
         cancelBtn.tintColor = UIColor.swapiYellow
         cancelBtn.alpha = 0
@@ -107,31 +114,27 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
     
     @objc func textFieldDidChange(){
         if let text = textField.text {
-            delegate?.searchForText(searchText: text)
+            delegate?.textDidChange(searchBar: self, text: text)
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text {
-            delegate?.searchForText(searchText: text)
+            delegate?.textDidChange(searchBar: self, text: text)
         }
         textField.resignFirstResponder()
         return false
     }
     
-    @objc func cancelBtnPressed(){
+    @objc func cancelButtonPressed() {
         textField.text = ""
         textField.endEditing(true)
-        delegate?.cancelBtnPressed()
+        delegate?.cancelButtonPressed(on: self)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let correctInput = NSCharacterSet(charactersIn:" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-+")
         let characterSetFromTextField = NSCharacterSet(charactersIn: string)
-        if correctInput.isSuperset(of: characterSetFromTextField as CharacterSet) {
-            return true
-        } else {
-            return false
-        }
+        return correctInput.isSuperset(of: characterSetFromTextField as CharacterSet) 
     }
 }

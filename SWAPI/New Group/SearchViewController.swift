@@ -8,35 +8,43 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CustomSearchBarDelegate {
-
-    var searchResults: [jsonPersonSearchObject.PersonObject]? {
+class SearchViewController: BaseViewController {
+    // Data
+    var searchResults: [SearchPersonResult.Person]? {
         didSet {
+            noDataLabel.isHidden = (searchResults?.count ?? 0) > 0
             tableView.reloadData()
         }
     }
 
-    let tableView = UITableView(frame: .zero)
+    // Views
     let searchBar = CustomSearchBar(frame: .zero)
+    let activityIndicator = {
+        let indicator = UIActivityIndicatorView(frame: .zero)
+        indicator.color = UIColor.swapiYellow
+        indicator.snp.makeConstraints {
+            $0.size.equalTo(CGSize(width: 20, height: 20))
+        }
+        return indicator
+    }()
+    let noDataLabel = UILabel(frame: .zero)
     
-    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    // MARK: - Init
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        configureView()
     }
     
-    func configureView(){
-        view.backgroundColor = UIColor.swapiBackground
-        
-        activityIndicator.color = UIColor.swapiYellow
-        let barButton = UIBarButtonItem(customView: activityIndicator)
-        self.navigationItem.setRightBarButton(barButton, animated: true)
-    }
-    
-    func setupViews(){
+    private func setupViews() {
         self.view.backgroundColor = UIColor.swapiBackground
+        setupSearchBar()
+        setupTableView()
+        setupIndicatorView()
+        setupNoDataLabel()
+    }
+    
+    private func setupSearchBar() {
         searchBar.delegate = self
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints{
@@ -44,98 +52,48 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             $0.left.right.equalTo(view)
             $0.height.equalTo(55)
         }
-//        NSLayoutConstraint.activate([
-//            searchBar.topAnchor.constraint(equalTo: view.topAnchor),
-//            searchBar.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            searchBar.rightAnchor.constraint(equalTo: view.rightAnchor),
-//            searchBar.heightAnchor.constraint(equalToConstant: 55)
-//        ])
-//
+    }
+    
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(CharacterCell.self, forCellReuseIdentifier: "swapiCell")
-        tableView.configureColorTheme()
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints {
-            $0.left.right.bottom.equalTo(view)
+        tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
+        tableView.snp.remakeConstraints {
             $0.top.equalTo(searchBar.snp.bottom)
+            $0.left.right.bottom.equalTo(view)
         }
-//        NSLayoutConstraint.activate([
-//            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-//            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            tableView.rightAnchor.constraint(equalTo: view.rightAnchor)
-//        ])
     }
+    
+    private func setupIndicatorView() {
+        let barButton = UIBarButtonItem(customView: activityIndicator)
+        self.navigationItem.setRightBarButton(barButton, animated: true)
+    }
+    
+    private func setupNoDataLabel() {
+        noDataLabel.text = "Nothing found"
+        noDataLabel.isHidden = true
+        noDataLabel.textColor = UIColor.swapiYellow
+        noDataLabel.textAlignment = .center
+        view.addSubview(noDataLabel)
+        noDataLabel.snp.makeConstraints {
+            $0.edges.equalTo(view)
+        }
+    }
+    
+    // MARK: - LifeCycle
     
     override func viewDidAppear(_ animated: Bool) {
         searchBar.textField.becomeFirstResponder()
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        var numOfSections: Int = 0
-        if let count = searchResults?.count {
-            if count != 0  {
-                tableView.separatorStyle = .singleLine
-                numOfSections = 1
-                tableView.backgroundView = nil
-            } else {
-                let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text = "Nothing found"
-                noDataLabel.textColor = UIColor.swapiYellow
-                noDataLabel.textAlignment = .center
-                tableView.backgroundView = noDataLabel
-                tableView.separatorStyle = .none
-            }
-        } else {
-            numOfSections = 1
-            tableView.backgroundView = nil
-            tableView.separatorStyle = .singleLine
-        }
-        return numOfSections
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = searchResults?.count {
-          return count
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "swapiCell", for: indexPath) as! CharacterCell
-        if let array = searchResults, array.isEmpty == false {
-            cell.name.text = array[indexPath.row].name
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let results = searchResults {
-            let result = results[indexPath.row]
-            let detailVC = DetailViewController(personObject: result)
-            detailVC.personObject = result
-            navigationController?.pushViewController(detailVC, animated: true)
-        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.textField.resignFirstResponder()
     }
     
-    func cancelBtnPressed(){
-        searchResults = nil
-        tableView.reloadData()
-    }
+    // MARK: - Private 
     
-    func searchForText(searchText: String) {
-        activityIndicator.startAnimating()
-            updateSearchResults(text: searchText)
-    }
-    
-    var lastPerformedArgument: NSString? = nil
-    func updateSearchResults(text: String) {
+    private var lastPerformedArgument: NSString? = nil
+    private func updateSearchResults(text: String) {
         NSObject.cancelPreviousPerformRequests(
             withTarget: self,
             selector: #selector(searchForPerson(with:)),
@@ -149,25 +107,53 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func searchForPerson(with str: String) {
+        activityIndicator.startAnimating()
         SWAPI.searchPerson(forString: str) { (personObjectArray) in
+            self.activityIndicator.stopAnimating()
             if let array = personObjectArray {
                 self.searchResults = array
-                self.activityIndicator.stopAnimating()
             } else {
                 let alert = UIAlertController(title: "Error", message: "Could not recieve search results", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-                self.activityIndicator.stopAnimating()
             }
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = tableView.indexPathForSelectedRow
-        if segue.identifier == "showDetails" {
-            let destination = segue.destination as! DetailViewController
-            destination.personObject = searchResults![indexPath!.row]
-        }
+}
+
+// MARK: - UITableViewDataSource
+extension SearchViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        searchResults?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier, for: indexPath)
+        (cell as? CharacterCell)?.name.text = searchResults?[indexPath.row].name
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let person = searchResults?[indexPath.row] else { return }
+        let detailVC = DetailViewController(personObject: person)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+// MARK: - CustomSearchBarDelegate {
+extension SearchViewController: CustomSearchBarDelegate {
+    func textDidChange(searchBar: CustomSearchBar, text: String) {
+        updateSearchResults(text: text)
+    }
+    
+    func cancelButtonPressed(on searchBar: CustomSearchBar) {
+//        searchResults = nil
+    }
 }

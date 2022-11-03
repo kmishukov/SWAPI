@@ -1,5 +1,5 @@
 //
-//  jsonFilmObject.swift
+//  FilmResult.swift
 //  SWAPI
 //
 //  Created by Konstantin Mishukov on 10/12/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct jsonFilmObject: Codable {
+struct FilmResult: Codable {
     var title: String
     var episode_id: Int
     var opening_crawl: String
@@ -35,7 +35,7 @@ extension SWAPI {
                 do {
                     counter += 1
                     let decoder = JSONDecoder()
-                    let response = try decoder.decode(jsonFilmObject.self, from: recieved.data!)
+                    let response = try decoder.decode(FilmResult.self, from: recieved.data!)
                     if films == "" {
                         films = "Films: \(response.title)"
                     } else {
