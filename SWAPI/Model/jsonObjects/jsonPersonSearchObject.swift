@@ -9,6 +9,10 @@
 import Foundation
 
 struct jsonPersonSearchObject: Codable {
+    var count: Int
+    var next: String?
+    var previous: String?
+    var results: [PersonObject]?
     
     struct PersonObject: Codable {
         var name: String
@@ -47,16 +51,11 @@ struct jsonPersonSearchObject: Codable {
             case edited = "edited"
             case url = "url"
         }
-        
     }
-    var count: Int
-    var next: String?
-    var previous: String?
-    var results: [PersonObject]?
 }
 
 extension SWAPI {
-    static func parseJsonPersonObject (object: jsonPersonSearchObject.PersonObject) -> Person {
+    static func downloadPersonDetails(object: jsonPersonSearchObject.PersonObject) -> Person {
         
         let group = DispatchGroup()
         var person = Person(object: object)

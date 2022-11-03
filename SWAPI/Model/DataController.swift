@@ -17,7 +17,7 @@ class DataController: NSObject {
         return appDelegate.persistentContainer.viewContext
     }
     
-    class func addPerson(person: Person){
+    static func addPerson(person: Person){
         let context = getContext()
         let name = person.name
         let personFetch = NSFetchRequest<NSFetchRequestResult>(entityName: DataController.personEntity)
@@ -39,7 +39,7 @@ class DataController: NSObject {
         }
     }
     
-    class func fetchPersons() -> [PersonData]? {
+    static func fetchPersons() -> [PersonData]? {
         let context = getContext()
         var array: [PersonData]? = nil
         do {
@@ -50,14 +50,14 @@ class DataController: NSObject {
         }
     }
     
-    class func removePersonObject(data: PersonData) {
+    static func removePersonObject(data: PersonData) {
         let context = getContext()
         context.delete(data)
         print("\(String(describing: data.name)) removed.")
         save()
     }
     
-    class func save() {
+    static func save() {
         let context = getContext()
         if context.hasChanges {
             do {
@@ -70,11 +70,11 @@ class DataController: NSObject {
     }
 }
 
+
+// MARK: - Init with Person
 extension PersonData {
-    
     convenience init(person: Person, context: NSManagedObjectContext) {
         self.init(context: context)
-        
         self.name = person.name
         self.birth_year = person.birth_year
         self.created = person.created

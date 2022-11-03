@@ -38,7 +38,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func setupViews(){
         self.view.backgroundColor = UIColor.swapiBackground
         searchBar.delegate = self
-//        searchBar.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints{
             $0.top.equalTo(view.snp_topMargin)

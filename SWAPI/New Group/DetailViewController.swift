@@ -135,7 +135,7 @@ class DetailViewController: UIViewController {
         
         self.activityIndicator.startAnimating()
         DispatchQueue.global(qos: .utility).async {
-            let person = SWAPI.parseJsonPersonObject(object: pobject)
+            let person = SWAPI.downloadPersonDetails(object: pobject)
             completion(person)
         }
     }
