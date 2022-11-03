@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class DataHandler: NSObject {
-    private class func getContext() -> NSManagedObjectContext {
+    static func getContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
@@ -52,6 +52,19 @@ class DataHandler: NSObject {
         let context = getContext()
         context.delete(data)
         print("\(String(describing: data.name)) removed.")
+        save()
+    }
+    
+    class func save() {
+        let context = getContext()
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }
 

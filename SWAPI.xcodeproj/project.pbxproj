@@ -15,7 +15,7 @@
 		1D0B908B21B9BD9E002D8793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0B908921B9BD9E002D8793 /* LaunchScreen.storyboard */; };
 		1D0B909621B9BD9E002D8793 /* SWAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B909521B9BD9E002D8793 /* SWAPITests.swift */; };
 		1D0B90A121B9BD9E002D8793 /* SWAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B90A021B9BD9E002D8793 /* SWAPIUITests.swift */; };
-		1D0B90AF21B9C0B8002D8793 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B90AE21B9C0B8002D8793 /* MainTableViewController.swift */; };
+		1D0B90AF21B9C0B8002D8793 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B90AE21B9C0B8002D8793 /* MainViewController.swift */; };
 		1D0D232821BD8BAF00F6AAD5 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232721BD8BAF00F6AAD5 /* CustomSearchBar.swift */; };
 		1D0D232C21BD983500F6AAD5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */; };
 		1D0D233021BDA8D400F6AAD5 /* DataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D232F21BDA8D400F6AAD5 /* DataHandler.swift */; };
@@ -67,7 +67,7 @@
 		1D0B909C21B9BD9E002D8793 /* SWAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SWAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0B90A021B9BD9E002D8793 /* SWAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPIUITests.swift; sourceTree = "<group>"; };
 		1D0B90A221B9BD9E002D8793 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1D0B90AE21B9C0B8002D8793 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		1D0B90AE21B9C0B8002D8793 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1D0D232721BD8BAF00F6AAD5 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1D0D232F21BDA8D400F6AAD5 /* DataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHandler.swift; sourceTree = "<group>"; };
@@ -204,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				1D0B907F21B9BD9C002D8793 /* LaunchViewController.swift */,
-				1D0B90AE21B9C0B8002D8793 /* MainTableViewController.swift */,
+				1D0B90AE21B9C0B8002D8793 /* MainViewController.swift */,
 				1D430BAD21B9D9E100EE2B9A /* SearchViewController.swift */,
 				1D0D232B21BD983500F6AAD5 /* DetailViewController.swift */,
 				1D3B3AD829140D5B009BD6A4 /* BaseViewController.swift */,
@@ -374,7 +374,7 @@
 				1D0D233221BDB27D00F6AAD5 /* Person.swift in Sources */,
 				1D3B3AD929140D5B009BD6A4 /* BaseViewController.swift in Sources */,
 				1DCBB90921C0766A00787271 /* SWAPI.swift in Sources */,
-				1D0B90AF21B9C0B8002D8793 /* MainTableViewController.swift in Sources */,
+				1D0B90AF21B9C0B8002D8793 /* MainViewController.swift in Sources */,
 				1D0D234121BE956600F6AAD5 /* jsonStarshipObject.swift in Sources */,
 				1D430BAE21B9D9E100EE2B9A /* SearchViewController.swift in Sources */,
 				1D0D233B21BE8DB500F6AAD5 /* jsonPlanetObject.swift in Sources */,

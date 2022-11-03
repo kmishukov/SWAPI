@@ -28,7 +28,7 @@ class LaunchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
 //        fadeInTitles()
-        let nc = UINavigationController(rootViewController: MainTableViewController())
+        let nc = UINavigationController(rootViewController: MainViewController())
         self.present(nc, animated: true)
     }
     
@@ -76,7 +76,7 @@ class LaunchViewController: UIViewController {
                 self.view.layoutIfNeeded()
             }, completion: { (true) in
 //                self.performSegue(withIdentifier: "launch", sender: self)
-                let nc = UINavigationController(rootViewController: MainTableViewController())
+                let nc = UINavigationController(rootViewController: MainViewController())
                 self.present(nc, animated: true)
             })
         }
