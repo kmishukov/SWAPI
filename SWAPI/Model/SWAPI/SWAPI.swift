@@ -9,5 +9,5 @@
 import Foundation
 
 class SWAPI {
-    
+    // Class that holds all the SWAPI Methods;
 }

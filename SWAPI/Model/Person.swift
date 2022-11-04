@@ -26,7 +26,7 @@ struct Person {
     var edited: String
     var url: String
     
-    init(object: SearchPersonResult.Person ) {
+    init(object: SearchPersonResponse.Person) {
         self.name = object.name
         self.height = object.height
         self.mass = object.mass

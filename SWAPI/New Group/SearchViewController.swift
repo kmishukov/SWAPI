@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewController: BaseViewController {
     // Data
-    var searchResults: [SearchPersonResult.Person]? {
+    var searchResults: [SearchPersonResponse.Person]? {
         didSet {
             noDataLabel.isHidden = (searchResults?.count ?? 0) > 0
             tableView.reloadData()
@@ -90,7 +90,7 @@ class SearchViewController: BaseViewController {
         searchBar.textField.resignFirstResponder()
     }
     
-    // MARK: - Private 
+    // MARK: - Private
     
     private var lastPerformedArgument: NSString? = nil
     private func updateSearchResults(text: String) {
@@ -108,9 +108,9 @@ class SearchViewController: BaseViewController {
     
     @objc func searchForPerson(with str: String) {
         activityIndicator.startAnimating()
-        SWAPI.searchPerson(forString: str) { (personObjectArray) in
+        SWAPI.searchPerson(forString: str) { persons in
             self.activityIndicator.stopAnimating()
-            if let array = personObjectArray {
+            if let array = persons {
                 self.searchResults = array
             } else {
                 let alert = UIAlertController(title: "Error", message: "Could not recieve search results", preferredStyle: .alert)
@@ -142,7 +142,7 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let person = searchResults?[indexPath.row] else { return }
-        let detailVC = DetailViewController(personObject: person)
+        let detailVC = DetailViewController(apiPerson: person)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

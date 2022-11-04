@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchPersonResult: Codable {
+struct SearchPersonResponse: Codable {
     var count: Int
     var next: String?
     var previous: String?
@@ -37,13 +37,12 @@ struct SearchPersonResult: Codable {
 extension SWAPI {
     static private let searchURL = "https://swapi.dev/api/people/?search="
     
-    static func searchPerson(forString string: String, completion: @escaping ([SearchPersonResult.Person]?) -> ()) -> () {
+    static func searchPerson(forString string: String, completion: @escaping ([SearchPersonResponse.Person]?) -> ()) -> () {
         APIManager.networkRequest(url: searchURL, parameter: string) { (recieved) in
             if let data = recieved.data {
                 do {
                     let decoder = JSONDecoder()
-                    let response = try decoder.decode(SearchPersonResult.self, from: data)
-                    print("Successfully received JSON.")
+                    let response = try decoder.decode(SearchPersonResponse.self, from: data)
                     completion(response.results)
                 } catch {
                     print(error)

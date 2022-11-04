@@ -14,7 +14,6 @@ public struct apiReturn {
     public var response: URLResponse?
 }
 
-
 class APIManager {
     static func networkRequest(url: String, parameter: String?, completion: @escaping (apiReturn) -> ()) {
         var recieved = apiReturn()

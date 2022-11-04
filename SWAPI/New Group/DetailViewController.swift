@@ -11,35 +11,30 @@ import UIKit
 class DetailViewController: UIViewController {
 
     // Views
-    private let nameLabel = UILabel(frame: .zero)
-    private let homeworldLabel = UILabel(frame: .zero)
-    private let filmsLabel = UILabel(frame: .zero)
-    private let speciesLabel = UILabel(frame: .zero)
-    private let vehiclesLabel = UILabel(frame: .zero)
-    private let starshipsLabel = UILabel(frame: .zero)
-    private let createEditLabel = UILabel(frame: .zero)
+    private let containerView = UIView(frame: .zero)
+    private let textLabel = UILabel(frame: .zero)
+    private let activityIndicator = UIActivityIndicatorView(frame: .zero)
     
     // Data
-    var person: Person? // Это для дейтела уже сохраненных
-    var personObject: SearchPersonResult.Person? // Это для лоада
-    let activityIndicator = UIActivityIndicatorView(frame: .zero)
+    private var person: Person?
+    private var apiPerson: SearchPersonResponse.Person?
     
     init() {
         person = nil
-        personObject = nil
+        apiPerson = nil
         super.init(nibName: nil, bundle: nil)
     }
     
     convenience init(person: Person) {
         self.init()
         self.person = person
-        self.personObject = nil
+        self.apiPerson = nil
     }
     
-    convenience init(personObject: SearchPersonResult.Person) {
+    convenience init(apiPerson: SearchPersonResponse.Person) {
         self.init()
         self.person = nil
-        self.personObject = personObject
+        self.apiPerson = apiPerson
     }
     
     required init?(coder: NSCoder) {
@@ -51,29 +46,19 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor.swapiBackground
         setupViews()
         
-        if let personObject = personObject {
-            downloadPersonDetails(pobject: personObject) { person in
+        if let apiPerson = apiPerson {
+            downloadPersonDetails(pobject: apiPerson) { person in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
-                }
-                guard let person = person else {
-                    // TODO: Alert
-                    return
-                }
-                DispatchQueue.global(qos: .background).async {
+                    guard let person = person else {
+                        // TODO: Alert
+                        return
+                    }
                     DataController.savePerson(person: person)
-                }
-                DispatchQueue.main.async {
                     self.updateView(p: person, textColor: UIColor.swapiGreen)
                     self.activityIndicator.stopAnimating()
                     UIView.animate(withDuration: 0.5, animations: {
-                        self.nameLabel.alpha = 1
-                        self.homeworldLabel.alpha = 1
-                        self.filmsLabel.alpha = 1
-                        self.speciesLabel.alpha = 1
-                        self.vehiclesLabel.alpha = 1
-                        self.starshipsLabel.alpha = 1
-                        self.createEditLabel.alpha = 1
+                        self.textLabel.alpha = 1
                     })
                 }
             }
@@ -83,42 +68,19 @@ class DetailViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints {
+        view.addSubview(containerView)
+        containerView.snp.makeConstraints {
             $0.top.equalTo(view.snp.topMargin).inset(5)
-            $0.left.right.equalTo(view)
+            $0.bottom.equalTo(view)
+            $0.left.right.equalTo(view).inset(10)
         }
         
-        view.addSubview(homeworldLabel)
-        homeworldLabel.snp.makeConstraints {
-            $0.top.equalTo(nameLabel.snp.bottom)
-            $0.left.right.equalTo(view)
+        textLabel.numberOfLines = 0
+        containerView.addSubview(textLabel)
+        textLabel.snp.makeConstraints {
+            $0.left.top.right.equalTo(containerView)
         }
-        
-        view.addSubview(filmsLabel)
-        filmsLabel.snp.makeConstraints {
-            $0.top.equalTo(homeworldLabel.snp.bottom)
-            $0.left.right.equalTo(view)
-        }
-        
-        view.addSubview(speciesLabel)
-        speciesLabel.snp.makeConstraints {
-            $0.top.equalTo(filmsLabel.snp.bottom)
-            $0.left.right.equalTo(view)
-        }
-        
-        view.addSubview(starshipsLabel)
-        starshipsLabel.snp.makeConstraints {
-            $0.top.equalTo(speciesLabel.snp.bottom)
-            $0.left.right.equalTo(view)
-        }
-        
-        view.addSubview(createEditLabel)
-        createEditLabel.snp.makeConstraints {
-            $0.top.equalTo(starshipsLabel.snp.bottom)
-            $0.left.right.equalTo(view)
-        }
-        
+
         activityIndicator.snp.makeConstraints {
             $0.size.equalTo(CGSize(width: 20, height: 20))
         }
@@ -128,14 +90,8 @@ class DetailViewController: UIViewController {
 
     }
     
-    func downloadPersonDetails(pobject: SearchPersonResult.Person, completion: @escaping (Person?) -> Void ){
-        nameLabel.alpha = 0
-        homeworldLabel.alpha = 0
-        filmsLabel.alpha = 0
-        speciesLabel.alpha = 0
-        vehiclesLabel.alpha = 0
-        starshipsLabel.alpha = 0
-        createEditLabel.alpha = 0
+    func downloadPersonDetails(pobject: SearchPersonResponse.Person, completion: @escaping (Person?) -> Void ){
+        textLabel.alpha = 0
         
         self.activityIndicator.startAnimating()
         DispatchQueue.global(qos: .utility).async {
@@ -145,48 +101,59 @@ class DetailViewController: UIViewController {
     }
    
     func updateView(p: Person, textColor: UIColor) {
+        textLabel.textColor = textColor
         
-        nameLabel.textColor = textColor
-        homeworldLabel.textColor = textColor
-        filmsLabel.textColor = textColor
-        speciesLabel.textColor = textColor
-        vehiclesLabel.textColor = textColor
-        starshipsLabel.textColor = textColor
-        createEditLabel.textColor = textColor
+        let boldFont = UIFont.systemFont(ofSize: 17, weight: .bold)
+        let boldAttributes: [NSAttributedString.Key: Any] = [.font: boldFont]
+        let medFont = UIFont.systemFont(ofSize: 17, weight: .regular)
+        let medAttributes: [NSAttributedString.Key: Any] = [.font: medFont]
         
-        nameLabel.numberOfLines = 0
-        nameLabel.text = "Name: \(p.name)\nHeight: \(p.height)\nMass: \(p.mass)\nHair color: \(p.hair_color)\nSkin color: \(p.skin_color)\nEye color: \(p.eye_color)\nBirth year: \(p.birth_year)\nGender: \(p.gender)"
-        homeworldLabel.numberOfLines = 0
-        if let homeworld = p.homeworld {
-            homeworldLabel.text =  "Homeworld: \(homeworld)"
-        } else {
-            homeworldLabel.text = "Homeworld: error?"
-        }
-        filmsLabel.numberOfLines = 0
-        if let films = p.films {
-            filmsLabel.text = films
-        } else {
-            filmsLabel.text = "Films: error?"
-        }
-        speciesLabel.numberOfLines = 0
-        if let species = p.species {
-            speciesLabel.text = species
-        } else {
-            speciesLabel.text = "Species: error?"
-        }
-        vehiclesLabel.numberOfLines = 0
-        if let vehicles = p.vehicles {
-            vehiclesLabel.text = vehicles
-        } else {
-            vehiclesLabel.text = "Vehicles: error?"
-        }
-        starshipsLabel.numberOfLines = 0
-        if let starships = p.starships {
-            starshipsLabel.text = starships
-        } else {
-            starshipsLabel.text = "Starships: error?"
-        }
-        createEditLabel.numberOfLines = 0
-        createEditLabel.text = "Created: \(p.created)\nEdited: \(p.edited)\nURL: \(p.url)"
+        // Name
+        let attributedText = NSMutableAttributedString(string: "Name: ", attributes: boldAttributes)
+        attributedText.append(NSMutableAttributedString(string: p.name, attributes: medAttributes))
+        // Mass
+        attributedText.append(NSMutableAttributedString(string: "\nMass: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.mass, attributes: medAttributes))
+        // Hair
+        attributedText.append(NSMutableAttributedString(string: "\nHair color: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.hair_color, attributes: medAttributes))
+        // Skin
+        attributedText.append(NSMutableAttributedString(string: "\nSkin color: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.skin_color, attributes: medAttributes))
+        // Eye
+        attributedText.append(NSMutableAttributedString(string: "\nEye color: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.eye_color, attributes: medAttributes))
+        // Birth
+        attributedText.append(NSMutableAttributedString(string: "\nBirth year: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.birth_year, attributes: medAttributes))
+        // Gender
+        attributedText.append(NSMutableAttributedString(string: "\nGender: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.gender, attributes: medAttributes))
+        // HomeWorld
+        attributedText.append(NSMutableAttributedString(string: "\nHomeWorld: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.homeworld ?? "none", attributes: medAttributes))
+        // Films
+        attributedText.append(NSMutableAttributedString(string: "\nFilms: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.films ?? "none", attributes: medAttributes))
+        // Species
+        attributedText.append(NSMutableAttributedString(string: "\nSpecies: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.species ?? "none", attributes: medAttributes))
+        // Vehicles
+        attributedText.append(NSMutableAttributedString(string: "\nVehicles: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.vehicles ?? "none", attributes: medAttributes))
+        // Starships
+        attributedText.append(NSMutableAttributedString(string: "\nStarhips: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.starships ?? "none", attributes: medAttributes))
+        // Created
+        attributedText.append(NSMutableAttributedString(string: "\n\nCreated: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.created, attributes: medAttributes))
+        // Edited
+        attributedText.append(NSMutableAttributedString(string: "\nEdited: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.edited, attributes: medAttributes))
+        // URL
+        attributedText.append(NSMutableAttributedString(string: "\n\nURL: ", attributes: boldAttributes))
+        attributedText.append(NSMutableAttributedString(string: p.url, attributes: medAttributes))
+        
+        textLabel.attributedText = attributedText
     }
 }
