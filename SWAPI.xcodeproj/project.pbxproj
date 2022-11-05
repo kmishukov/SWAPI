@@ -239,8 +239,8 @@
 		1D76E7BF2916639A00C2BAF7 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1D0D232F21BDA8D400F6AAD5 /* DataController.swift */,
 				1D0D233321BDB54F00F6AAD5 /* APIManager.swift */,
+				1D0D232F21BDA8D400F6AAD5 /* DataController.swift */,
 				1D0D233721BE023100F6AAD5 /* SWAPI Requests */,
 			);
 			path = Services;
@@ -633,6 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N9MQ3U2TY;
 				INFOPLIST_FILE = SWAPITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -654,6 +655,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N9MQ3U2TY;
 				INFOPLIST_FILE = SWAPITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -674,6 +676,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N9MQ3U2TY;
 				INFOPLIST_FILE = SWAPIUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -694,6 +697,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N9MQ3U2TY;
 				INFOPLIST_FILE = SWAPIUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
