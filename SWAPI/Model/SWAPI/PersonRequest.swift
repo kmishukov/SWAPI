@@ -8,34 +8,34 @@
 
 import Foundation
 
-struct SearchPersonResponse: Codable {
-    var count: Int
-    var next: String?
-    var previous: String?
-    var results: [Person]?
-    
-    struct Person: Codable {
-        var name: String
-        var height: String
-        var mass: String
-        var hair_color: String
-        var skin_color: String
-        var eye_color: String
-        var birth_year: String
-        var gender: String
-        var homeworld: String
-        var films: [String]
-        var species: [String]
-        var vehicles: [String]
-        var starships: [String]
-        var created: String
-        var edited: String
-        var url: String
-    }
-}
-
-extension SWAPI {
+class SWAPI {
     static private let searchURL = "https://swapi.dev/api/people/?search="
+    
+    struct SearchPersonResponse: Codable {
+        var count: Int
+        var next: String?
+        var previous: String?
+        var results: [Person]?
+        
+        struct Person: Codable {
+            var name: String
+            var height: String
+            var mass: String
+            var hair_color: String
+            var skin_color: String
+            var eye_color: String
+            var birth_year: String
+            var gender: String
+            var homeworld: String
+            var films: [String]
+            var species: [String]
+            var vehicles: [String]
+            var starships: [String]
+            var created: String
+            var edited: String
+            var url: String
+        }
+    }
     
     static func searchPerson(forString string: String, completion: @escaping ([SearchPersonResponse.Person]?) -> ()) -> () {
         APIManager.networkRequest(url: searchURL, parameter: string) { (recieved) in

@@ -33,7 +33,6 @@
 		1D76E7BA29143F5300C2BAF7 /* PersonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76E7B929143F5300C2BAF7 /* PersonRequest.swift */; };
 		1D76E7BD291460D600C2BAF7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76E7BC291460D600C2BAF7 /* UIColor+.swift */; };
 		1DC7CC2E2911387D00919361 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1DC7CC2D2911387D00919361 /* SnapKit */; };
-		1DCBB90921C0766A00787271 /* SWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCBB90821C0766A00787271 /* SWAPI.swift */; };
 		1DF9C62B21BC9FF800E355B3 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF9C62A21BC9FF800E355B3 /* CharacterCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +85,6 @@
 		1D430BB021BC821300EE2B9A /* Death-Star.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Death-Star.otf"; sourceTree = "<group>"; };
 		1D76E7B929143F5300C2BAF7 /* PersonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRequest.swift; sourceTree = "<group>"; };
 		1D76E7BC291460D600C2BAF7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		1DCBB90821C0766A00787271 /* SWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWAPI.swift; sourceTree = "<group>"; };
 		1DF9C62A21BC9FF800E355B3 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,8 +192,13 @@
 		1D0D233721BE023100F6AAD5 /* SWAPI */ = {
 			isa = PBXGroup;
 			children = (
-				1DCBB90821C0766A00787271 /* SWAPI.swift */,
-				1D76E7BB2914435200C2BAF7 /* Requests */,
+				1D76E7B929143F5300C2BAF7 /* PersonRequest.swift */,
+				1D0D233521BDCAEE00F6AAD5 /* DetailsRequest.swift */,
+				1D0D233A21BE8DB500F6AAD5 /* HomeworldRequest.swift */,
+				1D0D233821BE024C00F6AAD5 /* FilmRequest.swift */,
+				1D0D233C21BE928D00F6AAD5 /* SpeciesRequest.swift */,
+				1D0D233E21BE948500F6AAD5 /* VehicleRequest.swift */,
+				1D0D234021BE956600F6AAD5 /* StarshipRequest.swift */,
 			);
 			path = SWAPI;
 			sourceTree = "<group>";
@@ -228,20 +231,6 @@
 				1D430BB021BC821300EE2B9A /* Death-Star.otf */,
 			);
 			path = fonts;
-			sourceTree = "<group>";
-		};
-		1D76E7BB2914435200C2BAF7 /* Requests */ = {
-			isa = PBXGroup;
-			children = (
-				1D76E7B929143F5300C2BAF7 /* PersonRequest.swift */,
-				1D0D233521BDCAEE00F6AAD5 /* DetailsRequest.swift */,
-				1D0D233A21BE8DB500F6AAD5 /* HomeworldRequest.swift */,
-				1D0D233821BE024C00F6AAD5 /* FilmRequest.swift */,
-				1D0D233C21BE928D00F6AAD5 /* SpeciesRequest.swift */,
-				1D0D233E21BE948500F6AAD5 /* VehicleRequest.swift */,
-				1D0D234021BE956600F6AAD5 /* StarshipRequest.swift */,
-			);
-			path = Requests;
 			sourceTree = "<group>";
 		};
 		1D76E7BE2914612100C2BAF7 /* Extensions */ = {
@@ -396,7 +385,6 @@
 				1D0D233021BDA8D400F6AAD5 /* DataController.swift in Sources */,
 				1D0D233221BDB27D00F6AAD5 /* Person.swift in Sources */,
 				1D3B3AD929140D5B009BD6A4 /* BaseViewController.swift in Sources */,
-				1DCBB90921C0766A00787271 /* SWAPI.swift in Sources */,
 				1D0B90AF21B9C0B8002D8793 /* MainViewController.swift in Sources */,
 				1D0D234121BE956600F6AAD5 /* StarshipRequest.swift in Sources */,
 				1D430BAE21B9D9E100EE2B9A /* SearchViewController.swift in Sources */,
