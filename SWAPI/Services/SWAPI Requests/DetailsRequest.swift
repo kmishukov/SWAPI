@@ -9,6 +9,11 @@
 import Foundation
 
 extension SWAPI {
+    
+    /// Method of getting multiple details of a person using groups.
+    /// - Parameters:
+    ///   - pobject: Person object with URLs in its properties.
+    ///   - completion: Returns an optional Person object with filled properties.
     static func downloadPersonDetails(object: SearchPersonResponse.Person) -> Person {
         let group = DispatchGroup()
         var person = Person(object: object)
@@ -51,6 +56,9 @@ extension SWAPI {
         return person
     }
     
+    /// Method of getting multiple details of a person using async/await.
+    /// - Parameter responsePerson: Person object with URLs in its properties.
+    /// - Returns: An optional Person object with filled properties.
     static func downloadPersonDetails(_ responsePerson: SearchPersonResponse.Person) async -> Person? {
         async let homeworld = await SWAPI.getHomeworld(urlStr: responsePerson.homeworld)
         async let films = await SWAPI.getFilms(urlsStr: responsePerson.films)

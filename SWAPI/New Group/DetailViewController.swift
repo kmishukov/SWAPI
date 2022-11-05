@@ -103,22 +103,13 @@ class DetailViewController: UIViewController {
 
     }
     
-    /// Method of getting multiple details of a person using groups.
-    /// - Parameters:
-    ///   - pobject: Person object with URLs in its properties.
-    ///   - completion: Returns an optional Person object with filled properties.
     func downloadPersonDetails(pobject: SearchPersonResponse.Person, completion: @escaping (Person?) -> Void ){
         textLabel.alpha = 0
         activityIndicator.startAnimating()
-        DispatchQueue.global(qos: .utility).async {
-            let person = SWAPI.downloadPersonDetails(object: pobject)
-            completion(person)
-        }
+        let person = SWAPI.downloadPersonDetails(object: pobject)
+        completion(person)
     }
     
-    /// Method of getting multiple details of a person using async/await.
-    /// - Parameter responsePerson: Person object with URLs in its properties.
-    /// - Returns: An optional Person object with filled properties.
     func downloadDetails(responsePerson: SearchPersonResponse.Person) async -> Person? {
         textLabel.alpha = 0
         activityIndicator.startAnimating()

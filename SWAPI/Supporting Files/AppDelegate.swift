@@ -16,10 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainVC = MainViewController()
-        let navigation = UINavigationController(rootViewController: mainVC)
         configureColorTheme()
-        window?.rootViewController = navigation
+        window?.rootViewController = LaunchViewController()
         window?.makeKeyAndVisible()
         return true
     }
