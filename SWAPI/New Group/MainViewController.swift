@@ -132,7 +132,7 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
         case .update:
             break
         @unknown default:
-            fatalError()
+            fatalError("Unknown NSFetchedResultsChangeType")
         }
     }
 
@@ -151,7 +151,7 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
         @unknown default:
-            fatalError()
+            fatalError("Unknown NSFetchedResultsChangeType")
         }
     }
 

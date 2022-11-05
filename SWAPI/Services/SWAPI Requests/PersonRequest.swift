@@ -8,29 +8,48 @@
 
 import Foundation
 
-struct SearchPersonResponse: Codable {
+struct SearchPersonResponse: Decodable {
     var count: Int
     var next: String?
     var previous: String?
     var results: [Person]?
 
-    struct Person: Codable {
-        var name: String
-        var height: String
-        var mass: String
-        var hair_color: String
-        var skin_color: String
-        var eye_color: String
-        var birth_year: String
-        var gender: String
-        var homeworld: String
-        var films: [String]
-        var species: [String]
-        var vehicles: [String]
-        var starships: [String]
-        var created: String
-        var edited: String
-        var url: String
+    struct Person: Decodable {
+        let name: String
+        let height: String
+        let mass: String
+        let hairColor: String
+        let skinColor: String
+        let eyeColor: String
+        let birthYear: String
+        let gender: String
+        let homeworld: String
+        let films: [String]
+        let species: [String]
+        let vehicles: [String]
+        let starships: [String]
+        let created: String
+        let edited: String
+        let url: String
+
+        enum CodingKeys: String, CodingKey {
+            case name
+            case height
+            case mass
+            case hairColor = "hair_color"
+            case skinColor = "skin_color"
+            case eyeColor = "eye_color"
+            case birthYear = "birth_year"
+            case gender
+            case homeworld
+            case films
+            case species
+            case vehicles
+            case starships
+            case created
+            case edited
+            case url
+        }
     }
 }
 

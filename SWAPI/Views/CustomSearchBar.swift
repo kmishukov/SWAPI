@@ -23,7 +23,7 @@ class CustomSearchBar: UIView, UITextFieldDelegate {
         didSet {
             if isSearching {
                 UIView.animate(withDuration: 0.2, animations: {
-                    self.widthConstraint?.constant += -(self.cancelBtn.frame.width)-8
+                    self.widthConstraint?.constant += -(self.cancelBtn.frame.width) - 8
                     self.layoutIfNeeded()
                 }, completion: { _ in
                     UIView.animate(withDuration: 0.2, animations: {
