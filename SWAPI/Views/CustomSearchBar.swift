@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol CustomSearchBarDelegate: class {
+protocol CustomSearchBarDelegate: AnyObject {
     func textDidChange(searchBar: CustomSearchBar, text: String)
     func cancelButtonPressed(on searchBar: CustomSearchBar)
 }
