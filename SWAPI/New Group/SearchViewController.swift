@@ -94,15 +94,13 @@ class SearchViewController: BaseViewController {
     
     private var lastPerformedArgument: NSString? = nil
     private func updateSearchResults(text: String) {
-        guard let lastPerformedArgument = lastPerformedArgument else {
-            lastPerformedArgument = text as NSString
-            return
+        if let lastArgument = lastPerformedArgument {
+            NSObject.cancelPreviousPerformRequests(
+                withTarget: self,
+                selector: #selector(searchForPerson(with:)),
+                object: lastArgument)
+            print("Canceled request with: \(String(describing: lastArgument)).")
         }
-        NSObject.cancelPreviousPerformRequests(
-            withTarget: self,
-            selector: #selector(searchForPerson(with:)),
-            object: lastPerformedArgument)
-        print("Canceled request with: \(String(describing: lastPerformedArgument)).")
         self.lastPerformedArgument = text as NSString
         self.perform(
             #selector(searchForPerson(with:)),
