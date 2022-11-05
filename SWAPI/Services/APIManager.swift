@@ -15,7 +15,7 @@ public struct ApiReturn {
 }
 
 class APIManager {
-    static func networkRequest(url: String, parameter: String?, completion: @escaping (ApiReturn) -> ()) {
+    static func networkRequest(url: String, parameter: String?, completion: @escaping (ApiReturn) -> Void) {
         var recieved = ApiReturn()
         HTTPRequest.request(url: url, parameter: parameter) { (data, response, error) in
             recieved.data = data
@@ -29,7 +29,9 @@ class APIManager {
 }
 
 class HTTPRequest {
-    class func request(url: String, parameter: String?, completionHandler: @escaping (_ data: Data?,_ response: URLResponse?,_ error: Error?) -> ()) -> () {
+    class func request(url: String,
+                       parameter: String?,
+                       completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
         var urlString = ""
         if let param = parameter {
             let parameterChecked = param.replacingOccurrences(of: " ", with: "%20")
@@ -48,9 +50,9 @@ class HTTPRequest {
                 print("URLRequest: \(urlString) end")
                 if error != nil {
                     print("Error -> \(String(describing: error))")
-                    completionHandler(nil,nil,error)
+                    completion(nil, nil, error)
                 } else {
-                    completionHandler(data, response, nil)
+                    completion(data, response, nil)
                 }
             })
         }
