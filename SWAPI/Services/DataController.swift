@@ -11,13 +11,13 @@ import CoreData
 
 class DataController: NSObject {
     static let personEntity = "PersonData"
-    
+
     static func getContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }
-    
-    static func savePerson(person: Person){
+
+    static func savePerson(person: Person) {
         let context = getContext()
         let name = person.name
         let personFetch = NSFetchRequest<NSFetchRequestResult>(entityName: DataController.personEntity)

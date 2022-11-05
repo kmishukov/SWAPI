@@ -8,15 +8,15 @@
 
 import Foundation
 
-public struct apiReturn {
+public struct ApiReturn {
     public var error: NSError?
     public var data: Data?
     public var response: URLResponse?
 }
 
 class APIManager {
-    static func networkRequest(url: String, parameter: String?, completion: @escaping (apiReturn) -> ()) {
-        var recieved = apiReturn()
+    static func networkRequest(url: String, parameter: String?, completion: @escaping (ApiReturn) -> ()) {
+        var recieved = ApiReturn()
         HTTPRequest.request(url: url, parameter: parameter) { (data, response, error) in
             recieved.data = data
             recieved.response = response
