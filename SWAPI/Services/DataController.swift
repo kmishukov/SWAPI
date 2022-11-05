@@ -13,7 +13,9 @@ final class DataController: NSObject {
     static let personEntity = "PersonData"
 
     static func getContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not get current context")
+        }
         return appDelegate.persistentContainer.viewContext
     }
 
@@ -23,7 +25,7 @@ final class DataController: NSObject {
         let personFetch = NSFetchRequest<NSFetchRequestResult>(entityName: DataController.personEntity)
         personFetch.predicate = NSPredicate(format: "name = %@", "\(name)")
         do {
-            let persons = try! context.fetch(personFetch)
+            let persons = try context.fetch(personFetch)
             if persons.count == 0 {
                 let _ = PersonData(person: person, context: context)
                 save()
@@ -37,6 +39,8 @@ final class DataController: NSObject {
                     save()
                 }
             }
+        } catch let err {
+            print(err.localizedDescription)
         }
     }
     
