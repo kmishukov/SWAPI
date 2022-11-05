@@ -19,10 +19,10 @@ struct Person {
         self.name = person.name
         self.height = person.height
         self.mass = person.mass
-        self.hair_color = person.hairColor
-        self.skin_color = person.skinColor
-        self.eye_color = person.eyeColor
-        self.birth_year = person.birthYear
+        self.hairColor = person.hairColor
+        self.skinColor = person.skinColor
+        self.eyeColor = person.eyeColor
+        self.birthYear = person.birthYear
         self.gender = person.gender
         self.created = person.created.toDate()
         self.edited = person.edited.toDate()
@@ -38,10 +38,10 @@ struct Person {
     var name: String
     var height: String
     var mass: String
-    var hair_color: String
-    var skin_color: String
-    var eye_color: String
-    var birth_year: String
+    var hairColor: String
+    var skinColor: String
+    var eyeColor: String
+    var birthYear: String
     var gender: String
     var homeworld: String?
     var films: String?
@@ -56,10 +56,10 @@ struct Person {
         self.name = object.name
         self.height = object.height
         self.mass = object.mass
-        self.hair_color = object.hairColor
-        self.skin_color = object.skinColor
-        self.eye_color = object.eyeColor
-        self.birth_year = object.birthYear
+        self.hairColor = object.hairColor
+        self.skinColor = object.skinColor
+        self.eyeColor = object.eyeColor
+        self.birthYear = object.birthYear
         self.gender = object.gender
         self.created = object.created.toDate()
         self.edited = object.edited.toDate()
@@ -70,10 +70,10 @@ struct Person {
         self.name = data.name ?? "error"
         self.height = data.height ?? "error"
         self.mass = data.mass ?? "error"
-        self.hair_color = data.hair_color ?? "error"
-        self.skin_color = data.skin_color ?? "error"
-        self.eye_color = data.eye_color ?? "error"
-        self.birth_year = data.birth_year ?? "error"
+        self.hairColor = data.hairColor ?? "error"
+        self.skinColor = data.skinColor ?? "error"
+        self.eyeColor = data.eyeColor ?? "error"
+        self.birthYear = data.birthYear ?? "error"
         self.gender = data.gender ?? "error"
         self.homeworld = data.homeworld ?? "error"
         self.films = data.films ?? "error"

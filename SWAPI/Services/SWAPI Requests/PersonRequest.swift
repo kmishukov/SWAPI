@@ -31,25 +31,6 @@ struct SearchPersonResponse: Decodable {
         let created: String
         let edited: String
         let url: String
-
-        enum CodingKeys: String, CodingKey {
-            case name
-            case height
-            case mass
-            case hairColor = "hair_color"
-            case skinColor = "skin_color"
-            case eyeColor = "eye_color"
-            case birthYear = "birth_year"
-            case gender
-            case homeworld
-            case films
-            case species
-            case vehicles
-            case starships
-            case created
-            case edited
-            case url
-        }
     }
 }
 
@@ -61,6 +42,7 @@ class SWAPI {
             if let data = recieved.data {
                 do {
                     let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let response = try decoder.decode(SearchPersonResponse.self, from: data)
                     completion(response.results)
                 } catch {

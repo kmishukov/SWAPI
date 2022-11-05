@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C52a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="PersonData" representedClassName="PersonData" syncable="YES" codeGenerationType="class">
-        <attribute name="birth_year" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="created" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="edited" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="eye_color" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="films" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="hair_color" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="height" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="homeworld" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mass" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="skin_color" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="spiecies" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="starships" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vehicles" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthYear" optional="YES" attributeType="String"/>
+        <attribute name="created" optional="YES" attributeType="String"/>
+        <attribute name="edited" optional="YES" attributeType="String"/>
+        <attribute name="eyeColor" optional="YES" attributeType="String"/>
+        <attribute name="films" optional="YES" attributeType="String"/>
+        <attribute name="gender" optional="YES" attributeType="String"/>
+        <attribute name="hairColor" optional="YES" attributeType="String"/>
+        <attribute name="height" optional="YES" attributeType="String"/>
+        <attribute name="homeworld" optional="YES" attributeType="String"/>
+        <attribute name="mass" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="skinColor" optional="YES" attributeType="String"/>
+        <attribute name="spiecies" optional="YES" attributeType="String"/>
+        <attribute name="starships" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="vehicles" optional="YES" attributeType="String"/>
     </entity>
-    <elements>
-        <element name="PersonData" positionX="-63" positionY="-18" width="128" height="285"/>
-    </elements>
 </model>

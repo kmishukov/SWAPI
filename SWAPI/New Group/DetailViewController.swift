@@ -132,16 +132,16 @@ class DetailViewController: UIViewController {
         attributedText.append(NSMutableAttributedString(string: person.mass, attributes: medAttributes))
         // Hair
         attributedText.append(NSMutableAttributedString(string: "\nHair color: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: person.hair_color, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.hairColor, attributes: medAttributes))
         // Skin
         attributedText.append(NSMutableAttributedString(string: "\nSkin color: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: person.skin_color, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.skinColor, attributes: medAttributes))
         // Eye
         attributedText.append(NSMutableAttributedString(string: "\nEye color: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: person.eye_color, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.eyeColor, attributes: medAttributes))
         // Birth
         attributedText.append(NSMutableAttributedString(string: "\nBirth year: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: person.birth_year, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.birthYear, attributes: medAttributes))
         // Gender
         attributedText.append(NSMutableAttributedString(string: "\nGender: ", attributes: boldAttributes))
         attributedText.append(NSMutableAttributedString(string: person.gender, attributes: medAttributes))
