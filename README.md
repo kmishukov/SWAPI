@@ -1,5 +1,5 @@
 # SWAPI Test Task
-> I wrote this app back in 2019, I've did some updates to code in Novermber 2022.
+> I wrote this app back in 2019, but did some updates to code in Novermber 2022.
 >
 > Unfortulately swapi.co is not maintained anymore, app is using swapi.dev now.
 
