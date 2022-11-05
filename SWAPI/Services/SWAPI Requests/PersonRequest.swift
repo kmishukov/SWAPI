@@ -9,10 +9,10 @@
 import Foundation
 
 struct SearchPersonResponse: Decodable {
-    var count: Int
-    var next: String?
-    var previous: String?
-    var results: [Person]?
+    let count: Int
+    let next: String?
+    let previous: String?
+    let results: [Person]?
 
     struct Person: Decodable {
         let name: String
@@ -36,7 +36,6 @@ struct SearchPersonResponse: Decodable {
 
 final class SWAPI {
     static private let searchURL = "https://swapi.dev/api/people/?search="
-
     static func searchPerson(forString string: String, completion: @escaping ([SearchPersonResponse.Person]?) -> Void) {
         APIManager.networkRequest(url: searchURL, parameter: string) { (recieved) in
             if let data = recieved.data {
