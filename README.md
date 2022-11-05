@@ -15,5 +15,5 @@
 - SearchViewController shows search results. Custom searchBar (oh god, 2019). Previous API request gets canceled if new symbol is added.
 - DetailViewController shows character information ether from CoreData or it uses URLs from search response model and downloads details about each character property then saves to CoreData.
 
-![Main](/Screenshots/Main.png)
-![](/Screenshots/Detail.png)
+![Main](/Screenshots/Search.png)
+![Search](/Screenshots/Detail.png)
