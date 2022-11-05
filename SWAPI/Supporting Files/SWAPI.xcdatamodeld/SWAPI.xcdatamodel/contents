@@ -11,7 +11,7 @@
         <attribute name="height" optional="YES" attributeType="String"/>
         <attribute name="homeworld" optional="YES" attributeType="String"/>
         <attribute name="mass" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
         <attribute name="skinColor" optional="YES" attributeType="String"/>
         <attribute name="spiecies" optional="YES" attributeType="String"/>
         <attribute name="starships" optional="YES" attributeType="String"/>

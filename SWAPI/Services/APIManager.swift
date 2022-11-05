@@ -41,7 +41,7 @@ final class HTTPRequest {
         config.timeoutIntervalForRequest = 10
         let task = URLSession(configuration: config).dataTask(with: request as URLRequest) { (data, response, error) in
             DispatchQueue.main.async(execute: {
-                print("URLRequest: \(urlString) end")
+                print("URLRequest: \(urlString) completed")
                 if error != nil {
                     print("Error -> \(String(describing: error))")
                     completion(nil, nil, error)

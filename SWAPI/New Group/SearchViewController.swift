@@ -108,7 +108,8 @@ final class SearchViewController: BaseViewController {
             afterDelay: 0.75)
     }
 
-    @objc func searchForPerson(with str: String) {
+    @objc
+    private func searchForPerson(with str: String) {
         activityIndicator.startAnimating()
         SWAPI.searchPerson(forString: str) { persons in
             self.activityIndicator.stopAnimating()

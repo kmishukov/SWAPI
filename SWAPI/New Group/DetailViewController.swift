@@ -28,12 +28,10 @@ final class DetailViewController: UIViewController {
     convenience init(person: Person) {
         self.init()
         self.person = person
-        self.apiPerson = nil
     }
 
     convenience init(apiPerson: SearchPersonResponse.Person) {
         self.init()
-        self.person = nil
         self.apiPerson = apiPerson
     }
 

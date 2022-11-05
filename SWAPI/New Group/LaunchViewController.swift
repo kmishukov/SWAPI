@@ -13,6 +13,8 @@ final class LaunchViewController: UIViewController {
     private let topTitle = UILabel()
     private let bottomTitle = UILabel()
 
+// MARK: - Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .swapiBackground
@@ -54,7 +56,9 @@ final class LaunchViewController: UIViewController {
         }
     }
 
-    func fadeInTitles() {
+// MARK: - Private
+
+    private func fadeInTitles() {
         topTitle.snp.updateConstraints {
             $0.centerX.equalTo(view)
         }
@@ -71,7 +75,8 @@ final class LaunchViewController: UIViewController {
                                      repeats: false)
     }
 
-    @objc func fadeOutTitles() {
+    @objc
+    private func fadeOutTitles() {
         topTitle.snp.updateConstraints {
             $0.centerX.equalTo(view).offset(400)
         }

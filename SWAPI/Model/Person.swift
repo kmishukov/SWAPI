@@ -9,6 +9,22 @@
 import Foundation
 
 struct Person {
+    let name: String
+    let height: String
+    let mass: String
+    let hairColor: String
+    let skinColor: String
+    let eyeColor: String
+    let birthYear: String
+    let gender: String
+    let homeworld: String?
+    let films: String?
+    let species: String?
+    let vehicles: String?
+    let starships: String?
+    let created: String
+    let edited: String
+    let url: String
 
     init(_ person: SearchPersonResponse.Person,
          homeworld: String?,
@@ -35,37 +51,6 @@ struct Person {
         self.starships = (starships ?? []).isEmpty ? nil : (starships ?? []).joined(separator: ", ")
     }
 
-    var name: String
-    var height: String
-    var mass: String
-    var hairColor: String
-    var skinColor: String
-    var eyeColor: String
-    var birthYear: String
-    var gender: String
-    var homeworld: String?
-    var films: String?
-    var species: String?
-    var vehicles: String?
-    var starships: String?
-    var created: String
-    var edited: String
-    var url: String
-
-    init(object: SearchPersonResponse.Person) {
-        self.name = object.name
-        self.height = object.height
-        self.mass = object.mass
-        self.hairColor = object.hairColor
-        self.skinColor = object.skinColor
-        self.eyeColor = object.eyeColor
-        self.birthYear = object.birthYear
-        self.gender = object.gender
-        self.created = object.created.toDate()
-        self.edited = object.edited.toDate()
-        self.url = object.url
-    }
-
     init(data: PersonData) {
         self.name = data.name ?? "error"
         self.height = data.height ?? "error"
@@ -75,33 +60,13 @@ struct Person {
         self.eyeColor = data.eyeColor ?? "error"
         self.birthYear = data.birthYear ?? "error"
         self.gender = data.gender ?? "error"
-        self.homeworld = data.homeworld ?? "error"
-        self.films = data.films ?? "error"
-        self.species = data.spiecies ?? "error"
-        self.vehicles = data.vehicles ?? "error"
-        self.starships = data.starships ?? "error"
+        self.homeworld = data.homeworld
+        self.films = data.films
+        self.species = data.spiecies
+        self.vehicles = data.vehicles
+        self.starships = data.starships
         self.created = data.created ?? "error"
         self.edited = data.edited ?? "error"
         self.url = data.url ?? "error"
-    }
-
-}
-
-extension String {
-    func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ") -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        guard let date = dateFormatter.date(from: self) else {
-            return self
-        }
-        return date.asString(style: .long)
-    }
-}
-
-extension Date {
-    func asString(style: DateFormatter.Style) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = style
-        return dateFormatter.string(from: self)
     }
 }

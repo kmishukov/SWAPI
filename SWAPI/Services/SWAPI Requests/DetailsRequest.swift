@@ -16,44 +16,49 @@ extension SWAPI {
     ///   - completion: Returns an optional Person object with filled properties.
     static func downloadPersonDetails(object: SearchPersonResponse.Person) -> Person {
         let group = DispatchGroup()
-        var person = Person(object: object)
+
+        var homeworld: String?
+        var films: [String]?
+        var species: [String]?
+        var vehicles: [String]?
+        var starships: [String]?
 
         group.enter()
-        SWAPI.getHomeworld(url: object.homeworld) { homeworld in
-            person.homeworld = homeworld
+        SWAPI.getHomeworld(url: object.homeworld) { apiHomeworld in
+            homeworld = homeworld
             group.leave()
         }
 
         group.enter()
-        SWAPI.getFilm(url: object.films) { films in
-            person.films = films?.joined(separator: ", ")
+        SWAPI.getFilm(url: object.films) { apiFilms in
+            films = apiFilms
             group.leave()
         }
 
         group.enter()
-        SWAPI.getSpecieName(url: object.species) { species in
-            person.species = species?.joined(separator: ", ")
+        SWAPI.getSpecieName(url: object.species) { apiSpecies in
+            species = apiSpecies
             group.leave()
         }
 
         if !object.vehicles.isEmpty {
             group.enter()
-            SWAPI.getVehicleName(urlArray: object.vehicles) { vehicles in
-                person.vehicles = vehicles?.joined(separator: ", ")
+            SWAPI.getVehicleName(urlArray: object.vehicles) { apiVehicles in
+                vehicles = apiVehicles
                 group.leave()
             }
         }
 
         if !object.starships.isEmpty {
             group.enter()
-            SWAPI.getStarshipName(urlArray: object.starships) { starships in
-                person.starships = starships?.joined(separator: ", ")
+            SWAPI.getStarshipName(urlArray: object.starships) { apiStarships in
+                starships = apiStarships
                 group.leave()
             }
         }
 
         group.wait()
-        return person
+        return Person(object, homeworld: homeworld, films: films, species: species, vehicles: vehicles, starships: starships)
     }
 
     /// Method of getting multiple details of a person using async/await.
