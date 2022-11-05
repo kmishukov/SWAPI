@@ -9,6 +9,27 @@
 import Foundation
 
 struct Person {
+    
+    init(_ person: SearchPersonResponse.Person, homeworld: String?, films: [String]?, species: [String]?, vehicles: [String]?, starships: [String]?) {
+        self.name = person.name
+        self.height = person.height
+        self.mass = person.mass
+        self.hair_color = person.hair_color
+        self.skin_color = person.skin_color
+        self.eye_color = person.eye_color
+        self.birth_year = person.birth_year
+        self.gender = person.gender
+        self.created = person.created.toDate()
+        self.edited = person.edited.toDate()
+        self.url = person.url
+    
+        self.homeworld = homeworld
+        self.films = (films ?? []).isEmpty ? nil : (films ?? []).joined(separator: ", ")
+        self.species = (species ?? []).isEmpty ? nil : (species ?? []).joined(separator: ", ")
+        self.vehicles = (vehicles ?? []).isEmpty ? nil : (vehicles ?? []).joined(separator: ", ")
+        self.starships = (starships ?? []).isEmpty ? nil : (starships ?? []).joined(separator: ", ")
+    }
+    
     var name: String
     var height: String
     var mass: String

@@ -50,4 +50,15 @@ extension SWAPI {
         group.wait()
         return person
     }
+    
+    static func downloadPersonDetails(_ responsePerson: SearchPersonResponse.Person) async -> Person? {
+        async let homeworld = await SWAPI.getHomeworld(urlStr: responsePerson.homeworld)
+        async let films = await SWAPI.getFilms(urlsStr: responsePerson.films)
+        async let species = await SWAPI.getSpecies(urlsStr: responsePerson.species)
+        async let vehicles = await SWAPI.getVehicles(urlsStr: responsePerson.vehicles)
+        async let starships = await SWAPI.getStarships(urlsStr: responsePerson.starships)
+        
+        return await Person(responsePerson, homeworld: homeworld, films: films, species: species, vehicles: vehicles, starships: starships)
+    }
+    
 }

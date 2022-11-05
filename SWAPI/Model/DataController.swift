@@ -26,15 +26,16 @@ class DataController: NSObject {
             let persons = try! context.fetch(personFetch)
             if persons.count == 0 {
                 let _ = PersonData(person: person, context: context)
-                do {
-                    try context.save()
-                    print("\(person.name) saved successfully.")
-                } catch {
-                    print(error)
-                    print("Save failed.")
+                save()
+            } else if let savedPerson = persons.first as? PersonData,
+                      let edited = savedPerson.edited {
+                if edited == person.edited {
+                    print("This person is already saved.")
+                } else {
+                    DataController.removePersonData(data: savedPerson)
+                    let _ = PersonData(person: person, context: context)
+                    save()
                 }
-            } else {
-                print("This person is already saved.")
             }
         }
     }
@@ -50,7 +51,7 @@ class DataController: NSObject {
         }
     }
     
-    static func removePersonObject(data: PersonData) {
+    static func removePersonData(data: PersonData) {
         let context = getContext()
         context.delete(data)
         print("\(String(describing: data.name)) removed.")

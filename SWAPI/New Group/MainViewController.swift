@@ -96,7 +96,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            DataController.removePersonObject(data: resultsController.object(at: indexPath))
+            DataController.removePersonData(data: resultsController.object(at: indexPath))
         }
     }
     

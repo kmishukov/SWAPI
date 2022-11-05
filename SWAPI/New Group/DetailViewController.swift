@@ -47,13 +47,24 @@ class DetailViewController: UIViewController {
         setupViews()
         
         if let apiPerson = apiPerson {
-            downloadPersonDetails(pobject: apiPerson) { person in
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    guard let person = person else {
-                        // TODO: Alert
-                        return
-                    }
+//            downloadPersonDetails(pobject: apiPerson) { person in
+//                DispatchQueue.main.async {
+//                    self.activityIndicator.stopAnimating()
+//                    guard let person = person else {
+//                        // TODO: Alert
+//                        return
+//                    }
+//                    DataController.savePerson(person: person)
+//                    self.updateView(p: person, textColor: UIColor.swapiGreen)
+//                    self.activityIndicator.stopAnimating()
+//                    UIView.animate(withDuration: 0.5, animations: {
+//                        self.textLabel.alpha = 1
+//                    })
+//                }
+//            }
+            Task {
+                let person = await downloadDetails(responsePerson: apiPerson)
+                if let person = person {
                     DataController.savePerson(person: person)
                     self.updateView(p: person, textColor: UIColor.swapiGreen)
                     self.activityIndicator.stopAnimating()
@@ -98,6 +109,11 @@ class DetailViewController: UIViewController {
             let person = SWAPI.downloadPersonDetails(object: pobject)
             completion(person)
         }
+    }
+    
+    func downloadDetails(responsePerson: SearchPersonResponse.Person) async -> Person? {
+        self.activityIndicator.startAnimating()
+        return await SWAPI.downloadPersonDetails(responsePerson)
     }
    
     func updateView(p: Person, textColor: UIColor) {
