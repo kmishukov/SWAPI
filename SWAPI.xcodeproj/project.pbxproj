@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D0B907E21B9BD9C002D8793 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B907D21B9BD9C002D8793 /* AppDelegate.swift */; };
 		1D0B908021B9BD9C002D8793 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B907F21B9BD9C002D8793 /* LaunchViewController.swift */; };
-		1D0B908321B9BD9C002D8793 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0B908121B9BD9C002D8793 /* Main.storyboard */; };
 		1D0B908621B9BD9C002D8793 /* SWAPI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D0B908421B9BD9C002D8793 /* SWAPI.xcdatamodeld */; };
 		1D0B908821B9BD9E002D8793 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0B908721B9BD9E002D8793 /* Assets.xcassets */; };
 		1D0B908B21B9BD9E002D8793 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0B908921B9BD9E002D8793 /* LaunchScreen.storyboard */; };
@@ -57,7 +56,6 @@
 		1D0B907A21B9BD9C002D8793 /* SWAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SWAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0B907D21B9BD9C002D8793 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D0B907F21B9BD9C002D8793 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		1D0B908221B9BD9C002D8793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D0B908521B9BD9C002D8793 /* SWAPI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SWAPI.xcdatamodel; sourceTree = "<group>"; };
 		1D0B908721B9BD9E002D8793 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D0B908A21B9BD9E002D8793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -137,12 +135,12 @@
 		1D0B907C21B9BD9C002D8793 /* SWAPI */ = {
 			isa = PBXGroup;
 			children = (
+				1D76E7BF2916639A00C2BAF7 /* Services */,
 				1D0D232421BD87C000F6AAD5 /* Model */,
 				1D430BA821B9C45600EE2B9A /* Views */,
 				1D430BA721B9C13600EE2B9A /* Controllers */,
 				1D0B908C21B9BD9E002D8793 /* Info.plist */,
 				1D0B90B121B9C0F6002D8793 /* Supporting Files */,
-				1D0B908421B9BD9C002D8793 /* SWAPI.xcdatamodeld */,
 			);
 			path = SWAPI;
 			sourceTree = "<group>";
@@ -169,11 +167,11 @@
 			isa = PBXGroup;
 			children = (
 				1D76E7BE2914612100C2BAF7 /* Extensions */,
-				1D430BAF21BC81F800EE2B9A /* fonts */,
+				1D430BAF21BC81F800EE2B9A /* Fonts */,
 				1D0B907D21B9BD9C002D8793 /* AppDelegate.swift */,
 				1D0B908921B9BD9E002D8793 /* LaunchScreen.storyboard */,
-				1D0B908121B9BD9C002D8793 /* Main.storyboard */,
 				1D0B908721B9BD9E002D8793 /* Assets.xcassets */,
+				1D0B908421B9BD9C002D8793 /* SWAPI.xcdatamodeld */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -181,15 +179,12 @@
 		1D0D232421BD87C000F6AAD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1D0D233321BDB54F00F6AAD5 /* APIManager.swift */,
 				1D0D233121BDB27D00F6AAD5 /* Person.swift */,
-				1D0D232F21BDA8D400F6AAD5 /* DataController.swift */,
-				1D0D233721BE023100F6AAD5 /* SWAPI */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1D0D233721BE023100F6AAD5 /* SWAPI */ = {
+		1D0D233721BE023100F6AAD5 /* SWAPI Requests */ = {
 			isa = PBXGroup;
 			children = (
 				1D76E7B929143F5300C2BAF7 /* PersonRequest.swift */,
@@ -200,7 +195,7 @@
 				1D0D233E21BE948500F6AAD5 /* VehicleRequest.swift */,
 				1D0D234021BE956600F6AAD5 /* StarshipRequest.swift */,
 			);
-			path = SWAPI;
+			path = "SWAPI Requests";
 			sourceTree = "<group>";
 		};
 		1D430BA721B9C13600EE2B9A /* Controllers */ = {
@@ -225,12 +220,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		1D430BAF21BC81F800EE2B9A /* fonts */ = {
+		1D430BAF21BC81F800EE2B9A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				1D430BB021BC821300EE2B9A /* Death-Star.otf */,
 			);
-			path = fonts;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		1D76E7BE2914612100C2BAF7 /* Extensions */ = {
@@ -239,6 +234,16 @@
 				1D76E7BC291460D600C2BAF7 /* UIColor+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1D76E7BF2916639A00C2BAF7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1D0D232F21BDA8D400F6AAD5 /* DataController.swift */,
+				1D0D233321BDB54F00F6AAD5 /* APIManager.swift */,
+				1D0D233721BE023100F6AAD5 /* SWAPI Requests */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +359,6 @@
 				1D0B908B21B9BD9E002D8793 /* LaunchScreen.storyboard in Resources */,
 				1D0B908821B9BD9E002D8793 /* Assets.xcassets in Resources */,
 				1D430BB121BC867900EE2B9A /* Death-Star.otf in Resources */,
-				1D0B908321B9BD9C002D8793 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,14 +438,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1D0B908121B9BD9C002D8793 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1D0B908221B9BD9C002D8793 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1D0B908921B9BD9E002D8793 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
