@@ -9,8 +9,13 @@
 import Foundation
 
 struct Person {
-    
-    init(_ person: SearchPersonResponse.Person, homeworld: String?, films: [String]?, species: [String]?, vehicles: [String]?, starships: [String]?) {
+
+    init(_ person: SearchPersonResponse.Person,
+         homeworld: String?,
+         films: [String]?,
+         species: [String]?,
+         vehicles: [String]?,
+         starships: [String]?) {
         self.name = person.name
         self.height = person.height
         self.mass = person.mass
@@ -22,14 +27,14 @@ struct Person {
         self.created = person.created.toDate()
         self.edited = person.edited.toDate()
         self.url = person.url
-    
+
         self.homeworld = homeworld
         self.films = (films ?? []).isEmpty ? nil : (films ?? []).joined(separator: ", ")
         self.species = (species ?? []).isEmpty ? nil : (species ?? []).joined(separator: ", ")
         self.vehicles = (vehicles ?? []).isEmpty ? nil : (vehicles ?? []).joined(separator: ", ")
         self.starships = (starships ?? []).isEmpty ? nil : (starships ?? []).joined(separator: ", ")
     }
-    
+
     var name: String
     var height: String
     var mass: String
@@ -46,7 +51,7 @@ struct Person {
     var created: String
     var edited: String
     var url: String
-    
+
     init(object: SearchPersonResponse.Person) {
         self.name = object.name
         self.height = object.height
@@ -60,7 +65,7 @@ struct Person {
         self.edited = object.edited.toDate()
         self.url = object.url
     }
-    
+
     init(data: PersonData) {
         self.name = data.name ?? "error"
         self.height = data.height ?? "error"
@@ -79,7 +84,7 @@ struct Person {
         self.edited = data.edited ?? "error"
         self.url = data.url ?? "error"
     }
-    
+
 }
 
 extension String {

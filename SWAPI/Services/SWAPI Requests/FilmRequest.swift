@@ -26,7 +26,7 @@ struct FilmResponse: Codable {
 }
 
 extension SWAPI {
-    static func getFilm(url: [String], completion: @escaping ([String]?) -> ()) {
+    static func getFilm(url: [String], completion: @escaping ([String]?) -> Void) {
         var films: [String]?
         for item in url {
             APIManager.networkRequest(url: item, parameter: nil) { reponse in
@@ -42,10 +42,10 @@ extension SWAPI {
         }
         completion(films)
     }
-    
+
     static func getFilms(urlsStr: [String]) async -> [String]? {
         guard !urlsStr.isEmpty else { return nil }
-        
+
         var films: [String] = []
         try? await withThrowingTaskGroup(of: String?.self, body: { group in
             for urlStr in urlsStr {
@@ -62,14 +62,14 @@ extension SWAPI {
         })
         return films.sorted()
     }
-    
+
     static private func getFilm(url: URL) async -> String? {
         do {
             print("Film Get")
             let (data, _) = try await URLSession.shared.data(from: url)
             let film = try JSONDecoder().decode(FilmResponse.self, from: data)
             return film.title
-        } catch (let err) {
+        } catch let err {
             print(err.localizedDescription)
         }
         return nil

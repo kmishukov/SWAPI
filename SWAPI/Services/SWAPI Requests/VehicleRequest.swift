@@ -29,10 +29,10 @@ extension SWAPI {
         }
         completion(vehicles)
     }
-    
+
     static func getVehicles(urlsStr: [String]) async -> [String]? {
         guard !urlsStr.isEmpty else { return nil }
-        
+
         var vehicles: [String] = []
         try? await withThrowingTaskGroup(of: String?.self, body: { group in
             for urlStr in urlsStr {
@@ -49,14 +49,14 @@ extension SWAPI {
         })
         return vehicles.sorted()
     }
-    
+
     static private func getVehicle(url: URL) async -> String? {
         do {
             print("Vehicle Get")
             let (data, _) = try await URLSession.shared.data(from: url)
             let vehicle = try JSONDecoder().decode(VehicleResponse.self, from: data)
             return vehicle.name
-        } catch (let err) {
+        } catch let err {
             print(err.localizedDescription)
         }
         return nil

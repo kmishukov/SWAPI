@@ -30,10 +30,10 @@ extension SWAPI {
         }
         completion(species)
     }
-    
+
     static func getSpecies(urlsStr: [String]) async -> [String]? {
         guard !urlsStr.isEmpty else { return nil }
-        
+
         var species: [String] = []
         try? await withThrowingTaskGroup(of: String?.self, body: { group in
             for urlStr in urlsStr {
@@ -50,14 +50,14 @@ extension SWAPI {
         })
         return species.sorted()
     }
-    
+
     static private func getSpecie(url: URL) async -> String? {
         do {
             print("Specie Get")
             let (data, _) = try await URLSession.shared.data(from: url)
             let specie = try JSONDecoder().decode(SpeciesResponse.self, from: data)
             return specie.name
-        } catch (let err) {
+        } catch let err {
             print(err.localizedDescription)
         }
         return nil

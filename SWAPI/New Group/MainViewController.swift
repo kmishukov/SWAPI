@@ -10,45 +10,48 @@ import UIKit
 import CoreData
 
 class MainViewController: BaseViewController {
-    
+
     private var resultsController: NSFetchedResultsController<PersonData> = {
         let request = NSFetchRequest<PersonData>(entityName: DataController.personEntity)
         let orderSort = NSSortDescriptor(key: "name", ascending: true)
         request.sortDescriptors = [orderSort]
-        return NSFetchedResultsController(fetchRequest: request, managedObjectContext: DataController.getContext(), sectionNameKeyPath: nil, cacheName: nil)
+        return NSFetchedResultsController(fetchRequest: request,
+                                          managedObjectContext: DataController.getContext(),
+                                          sectionNameKeyPath: nil,
+                                          cacheName: nil)
     }()
-    
+
     // MARK: Init
-    
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         title = "SWAPI"
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: LifeCycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         addSearchButton()
     }
-    
+
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CharacterCell.self, forCellReuseIdentifier: CharacterCell.identifier)
     }
-    
+
     private func addSearchButton() {
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
         navigationItem.setRightBarButton(searchButton, animated: false)
         navigationItem.rightBarButtonItem?.tintColor = UIColor.swapiYellow
     }
-    
+
     private func fetchResults() {
         do {
             try resultsController.performFetch()
@@ -56,20 +59,20 @@ class MainViewController: BaseViewController {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         resultsController.delegate = self
         fetchResults()
         tableView.reloadData()
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         resultsController.delegate = nil
     }
-    
+
     // MARK: Selector Actions
-    
-    @objc func didTapSearch() -> Void {
+
+    @objc func didTapSearch() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }
 }
@@ -79,11 +82,11 @@ extension MainViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         resultsController.sections?[section].numberOfObjects ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier, for: indexPath)
         let person = resultsController.object(at: indexPath)
@@ -94,12 +97,14 @@ extension MainViewController: UITableViewDataSource {
 
 // MARK: UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             DataController.removePersonData(data: resultsController.object(at: indexPath))
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let person = resultsController.object(at: indexPath)
         let detailVC = DetailViewController(person: Person(data: person))
@@ -112,8 +117,11 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
         switch type {
         case .insert:
             tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
@@ -127,8 +135,12 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
             fatalError()
         }
     }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
@@ -142,7 +154,7 @@ extension MainViewController: NSFetchedResultsControllerDelegate {
             fatalError()
         }
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }

@@ -13,7 +13,7 @@ struct SearchPersonResponse: Codable {
     var next: String?
     var previous: String?
     var results: [Person]?
-    
+
     struct Person: Codable {
         var name: String
         var height: String
@@ -36,8 +36,8 @@ struct SearchPersonResponse: Codable {
 
 class SWAPI {
     static private let searchURL = "https://swapi.dev/api/people/?search="
-    
-    static func searchPerson(forString string: String, completion: @escaping ([SearchPersonResponse.Person]?) -> ()) -> () {
+
+    static func searchPerson(forString string: String, completion: @escaping ([SearchPersonResponse.Person]?) -> Void) {
         APIManager.networkRequest(url: searchURL, parameter: string) { (recieved) in
             if let data = recieved.data {
                 do {

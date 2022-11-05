@@ -21,24 +21,21 @@ extension SWAPI {
                 let homeworldResult = try decoder.decode(HomeworldResponse.self, from: data)
                 let name = homeworldResult.name
                 completion(name)
-            } catch (let err) {
+            } catch let err {
                 print(err.localizedDescription)
             }
         }
     }
-    
+
     static func getHomeworld(urlStr: String) async -> String? {
         guard let url = URL(string: urlStr) else { return nil }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let homeworldResult = try JSONDecoder().decode(HomeworldResponse.self, from: data)
             return homeworldResult.name
-        } catch (let err) {
+        } catch let err {
             print(err.localizedDescription)
         }
         return nil
     }
-    
-    
 }
-

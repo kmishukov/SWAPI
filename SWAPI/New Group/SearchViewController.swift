@@ -28,14 +28,14 @@ class SearchViewController: BaseViewController {
         return indicator
     }()
     let noDataLabel = UILabel(frame: .zero)
-    
+
     // MARK: - Init
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
-    
+
     private func setupViews() {
         self.view.backgroundColor = UIColor.swapiBackground
         setupSearchBar()
@@ -43,17 +43,17 @@ class SearchViewController: BaseViewController {
         setupIndicatorView()
         setupNoDataLabel()
     }
-    
+
     private func setupSearchBar() {
         searchBar.delegate = self
         view.addSubview(searchBar)
-        searchBar.snp.makeConstraints{
+        searchBar.snp.makeConstraints {
             $0.top.equalTo(view.snp_topMargin)
             $0.left.right.equalTo(view)
             $0.height.equalTo(55)
         }
     }
-    
+
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -63,12 +63,12 @@ class SearchViewController: BaseViewController {
             $0.left.right.bottom.equalTo(view)
         }
     }
-    
+
     private func setupIndicatorView() {
         let barButton = UIBarButtonItem(customView: activityIndicator)
         self.navigationItem.setRightBarButton(barButton, animated: true)
     }
-    
+
     private func setupNoDataLabel() {
         noDataLabel.text = "Nothing found"
         noDataLabel.isHidden = true
@@ -79,20 +79,20 @@ class SearchViewController: BaseViewController {
             $0.edges.equalTo(view)
         }
     }
-    
+
     // MARK: - LifeCycle
-    
+
     override func viewDidAppear(_ animated: Bool) {
         searchBar.textField.becomeFirstResponder()
     }
-    
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.textField.resignFirstResponder()
     }
-    
+
     // MARK: - Private
-    
-    private var lastPerformedArgument: NSString? = nil
+
+    private var lastPerformedArgument: NSString?
     private func updateSearchResults(text: String) {
         if let lastArgument = lastPerformedArgument {
             NSObject.cancelPreviousPerformRequests(
@@ -107,7 +107,7 @@ class SearchViewController: BaseViewController {
             with: text,
             afterDelay: 0.75)
     }
-    
+
     @objc func searchForPerson(with str: String) {
         activityIndicator.startAnimating()
         SWAPI.searchPerson(forString: str) { persons in
@@ -115,7 +115,9 @@ class SearchViewController: BaseViewController {
             if let array = persons {
                 self.searchResults = array
             } else {
-                let alert = UIAlertController(title: "Error", message: "Could not recieve search results", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error",
+                                              message: "Could not recieve search results",
+                                              preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -128,11 +130,11 @@ extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         searchResults?.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CharacterCell.identifier, for: indexPath)
         (cell as? CharacterCell)?.name.text = searchResults?[indexPath.row].name
@@ -154,7 +156,7 @@ extension SearchViewController: CustomSearchBarDelegate {
     func textDidChange(searchBar: CustomSearchBar, text: String) {
         updateSearchResults(text: text)
     }
-    
+
     func cancelButtonPressed(on searchBar: CustomSearchBar) {
 //        searchResults = nil
     }

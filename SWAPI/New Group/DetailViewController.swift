@@ -14,41 +14,41 @@ class DetailViewController: UIViewController {
     private let containerView = UIView(frame: .zero)
     private let textLabel = UILabel(frame: .zero)
     private let activityIndicator = UIActivityIndicatorView(frame: .zero)
-    
+
     // Data
     private var person: Person?
     private var apiPerson: SearchPersonResponse.Person?
-    
+
     init() {
         person = nil
         apiPerson = nil
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     convenience init(person: Person) {
         self.init()
         self.person = person
         self.apiPerson = nil
     }
-    
+
     convenience init(apiPerson: SearchPersonResponse.Person) {
         self.init()
         self.person = nil
         self.apiPerson = apiPerson
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.swapiBackground
         setupViews()
-        
+
         if let apiPerson = apiPerson {
             // Two methods of gathering person details;
-            
+
 //            downloadPersonDetails(pobject: apiPerson) { person in
 //                DispatchQueue.main.async {
 //                    self.activityIndicator.stopAnimating()
@@ -63,12 +63,12 @@ class DetailViewController: UIViewController {
 //                    })
 //                }
 //            }
-            
+
             Task {
                 let person = await downloadDetails(responsePerson: apiPerson)
                 if let person = person {
                     DataController.savePerson(person: person)
-                    self.updateView(p: person, textColor: UIColor.swapiGreen)
+                    self.updateView(person: person, textColor: UIColor.swapiGreen)
                     self.activityIndicator.stopAnimating()
                     UIView.animate(withDuration: 0.5, animations: {
                         self.textLabel.alpha = 1
@@ -76,10 +76,10 @@ class DetailViewController: UIViewController {
                 }
             }
         } else if let person = person {
-            updateView(p: person, textColor: UIColor.swapiYellow)
+            updateView(person: person, textColor: UIColor.swapiYellow)
         }
     }
-    
+
     private func setupViews() {
         view.addSubview(containerView)
         containerView.snp.makeConstraints {
@@ -87,7 +87,7 @@ class DetailViewController: UIViewController {
             $0.bottom.equalTo(view)
             $0.left.right.equalTo(view).inset(10)
         }
-        
+
         textLabel.numberOfLines = 0
         containerView.addSubview(textLabel)
         textLabel.snp.makeConstraints {
@@ -102,74 +102,74 @@ class DetailViewController: UIViewController {
         self.navigationItem.setRightBarButton(barButton, animated: true)
 
     }
-    
-    func downloadPersonDetails(pobject: SearchPersonResponse.Person, completion: @escaping (Person?) -> Void ){
+
+    func downloadPersonDetails(pobject: SearchPersonResponse.Person, completion: @escaping (Person?) -> Void ) {
         textLabel.alpha = 0
         activityIndicator.startAnimating()
         let person = SWAPI.downloadPersonDetails(object: pobject)
         completion(person)
     }
-    
+
     func downloadDetails(responsePerson: SearchPersonResponse.Person) async -> Person? {
         textLabel.alpha = 0
         activityIndicator.startAnimating()
         return await SWAPI.downloadPersonDetails(responsePerson)
     }
-   
-    func updateView(p: Person, textColor: UIColor) {
+
+    func updateView(person: Person, textColor: UIColor) {
         textLabel.textColor = textColor
-        
+
         let boldFont = UIFont.systemFont(ofSize: 17, weight: .bold)
         let boldAttributes: [NSAttributedString.Key: Any] = [.font: boldFont]
         let medFont = UIFont.systemFont(ofSize: 17, weight: .regular)
         let medAttributes: [NSAttributedString.Key: Any] = [.font: medFont]
-        
+
         // Name
         let attributedText = NSMutableAttributedString(string: "Name: ", attributes: boldAttributes)
-        attributedText.append(NSMutableAttributedString(string: p.name, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.name, attributes: medAttributes))
         // Mass
         attributedText.append(NSMutableAttributedString(string: "\nMass: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.mass, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.mass, attributes: medAttributes))
         // Hair
         attributedText.append(NSMutableAttributedString(string: "\nHair color: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.hair_color, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.hair_color, attributes: medAttributes))
         // Skin
         attributedText.append(NSMutableAttributedString(string: "\nSkin color: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.skin_color, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.skin_color, attributes: medAttributes))
         // Eye
         attributedText.append(NSMutableAttributedString(string: "\nEye color: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.eye_color, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.eye_color, attributes: medAttributes))
         // Birth
         attributedText.append(NSMutableAttributedString(string: "\nBirth year: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.birth_year, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.birth_year, attributes: medAttributes))
         // Gender
         attributedText.append(NSMutableAttributedString(string: "\nGender: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.gender, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.gender, attributes: medAttributes))
         // HomeWorld
         attributedText.append(NSMutableAttributedString(string: "\nHomeWorld: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.homeworld ?? "none", attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.homeworld ?? "none", attributes: medAttributes))
         // Films
         attributedText.append(NSMutableAttributedString(string: "\nFilms: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.films ?? "none", attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.films ?? "none", attributes: medAttributes))
         // Species
         attributedText.append(NSMutableAttributedString(string: "\nSpecies: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.species ?? "none", attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.species ?? "none", attributes: medAttributes))
         // Vehicles
         attributedText.append(NSMutableAttributedString(string: "\nVehicles: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.vehicles ?? "none", attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.vehicles ?? "none", attributes: medAttributes))
         // Starships
         attributedText.append(NSMutableAttributedString(string: "\nStarhips: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.starships ?? "none", attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.starships ?? "none", attributes: medAttributes))
         // Created
         attributedText.append(NSMutableAttributedString(string: "\n\nCreated: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.created, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.created, attributes: medAttributes))
         // Edited
         attributedText.append(NSMutableAttributedString(string: "\nEdited: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.edited, attributes: medAttributes))
+        attributedText.append(NSMutableAttributedString(string: person.edited, attributes: medAttributes))
         // URL
         attributedText.append(NSMutableAttributedString(string: "\n\nURL: ", attributes: boldAttributes))
-        attributedText.append(NSMutableAttributedString(string: p.url, attributes: medAttributes))
-        
+        attributedText.append(NSMutableAttributedString(string: person.url, attributes: medAttributes))
+
         textLabel.attributedText = attributedText
     }
 }

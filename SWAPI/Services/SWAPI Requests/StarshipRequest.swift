@@ -29,10 +29,10 @@ extension SWAPI {
         }
         completion(starships)
     }
-    
+
     static func getStarships(urlsStr: [String]) async -> [String]? {
         guard !urlsStr.isEmpty else { return nil }
-        
+
         var starships: [String] = []
         try? await withThrowingTaskGroup(of: String?.self, body: { group in
             for urlStr in urlsStr {
@@ -49,14 +49,14 @@ extension SWAPI {
         })
         return starships.sorted()
     }
-    
+
     static private func getStarship(url: URL) async -> String? {
         do {
             print("Starship Get")
             let (data, _) = try await URLSession.shared.data(from: url)
             let starship = try JSONDecoder().decode(StarshipResponse.self, from: data)
             return starship.name
-        } catch (let err) {
+        } catch let err {
             print(err.localizedDescription)
         }
         return nil

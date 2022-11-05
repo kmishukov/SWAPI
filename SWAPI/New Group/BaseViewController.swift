@@ -10,7 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     let tableView = UITableView(frame: .zero, style: .plain)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
         }
         configureColorTheme()
     }
-    
+
     private func configureColorTheme() {
         tableView.backgroundColor = UIColor.swapiBackground
         tableView.tableFooterView = UIView()
