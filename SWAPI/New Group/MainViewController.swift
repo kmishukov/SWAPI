@@ -11,6 +11,7 @@ import CoreData
 
 final class MainViewController: BaseViewController {
 
+    private let noDataLabel = UILabel(frame: .zero)
     private var resultsController: NSFetchedResultsController<PersonData> = {
         let request = NSFetchRequest<PersonData>(entityName: DataController.personEntity)
         let orderSort = NSSortDescriptor(key: "name", ascending: true)
@@ -38,6 +39,7 @@ final class MainViewController: BaseViewController {
         super.viewDidLoad()
         setupTableView()
         addSearchButton()
+        setupNoDataLabel()
     }
 
     private func setupTableView() {
@@ -52,12 +54,24 @@ final class MainViewController: BaseViewController {
         navigationItem.rightBarButtonItem?.tintColor = UIColor.swapiYellow
     }
 
+    private func setupNoDataLabel() {
+        noDataLabel.text = "Recent search results\nwill appear here"
+        noDataLabel.textColor = .swapiYellow
+        noDataLabel.textAlignment = .center
+        noDataLabel.numberOfLines = 0
+        view.addSubview(noDataLabel)
+        noDataLabel.snp.makeConstraints {
+            $0.edges.equalTo(view)
+        }
+    }
+
     private func fetchResults() {
         do {
             try resultsController.performFetch()
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
+        noDataLabel.isHidden = (resultsController.sections?[0].numberOfObjects ?? 0) > 0
     }
 
     override func viewWillAppear(_ animated: Bool) {
