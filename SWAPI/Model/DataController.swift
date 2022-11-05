@@ -71,7 +71,6 @@ class DataController: NSObject {
     }
 }
 
-
 // MARK: - Init with Person
 extension PersonData {
     convenience init(person: Person, context: NSManagedObjectContext) {

@@ -94,6 +94,10 @@ class SearchViewController: BaseViewController {
     
     private var lastPerformedArgument: NSString? = nil
     private func updateSearchResults(text: String) {
+        guard let lastPerformedArgument = lastPerformedArgument else {
+            lastPerformedArgument = text as NSString
+            return
+        }
         NSObject.cancelPreviousPerformRequests(
             withTarget: self,
             selector: #selector(searchForPerson(with:)),
