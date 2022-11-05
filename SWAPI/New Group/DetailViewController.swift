@@ -47,11 +47,12 @@ class DetailViewController: UIViewController {
         setupViews()
         
         if let apiPerson = apiPerson {
+            // Two methods of gathering person details;
+            
 //            downloadPersonDetails(pobject: apiPerson) { person in
 //                DispatchQueue.main.async {
 //                    self.activityIndicator.stopAnimating()
 //                    guard let person = person else {
-//                        // TODO: Alert
 //                        return
 //                    }
 //                    DataController.savePerson(person: person)
@@ -62,6 +63,7 @@ class DetailViewController: UIViewController {
 //                    })
 //                }
 //            }
+            
             Task {
                 let person = await downloadDetails(responsePerson: apiPerson)
                 if let person = person {
@@ -101,18 +103,25 @@ class DetailViewController: UIViewController {
 
     }
     
+    /// Sync method of getting multiple details of a person.
+    /// - Parameters:
+    ///   - pobject: Person object with URLs in its properties.
+    ///   - completion: Returns an optional Person object with filled properties.
     func downloadPersonDetails(pobject: SearchPersonResponse.Person, completion: @escaping (Person?) -> Void ){
         textLabel.alpha = 0
-        
-        self.activityIndicator.startAnimating()
+        activityIndicator.startAnimating()
         DispatchQueue.global(qos: .utility).async {
             let person = SWAPI.downloadPersonDetails(object: pobject)
             completion(person)
         }
     }
     
+    /// Async method of getting multiple details of a person.
+    /// - Parameter responsePerson: Person object with URLs in its properties.
+    /// - Returns: Person object with filled properties.
     func downloadDetails(responsePerson: SearchPersonResponse.Person) async -> Person? {
-        self.activityIndicator.startAnimating()
+        textLabel.alpha = 0
+        activityIndicator.startAnimating()
         return await SWAPI.downloadPersonDetails(responsePerson)
     }
    
