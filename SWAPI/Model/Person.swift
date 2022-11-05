@@ -9,73 +9,64 @@
 import Foundation
 
 struct Person {
-    var name: String
-    var height: String
-    var mass: String
-    var hair_color: String
-    var skin_color: String
-    var eye_color: String
-    var birth_year: String
-    var gender: String
-    var homeworld: String?
-    var films: String?
-    var species: String?
-    var vehicles: String?
-    var starships: String?
-    var created: String
-    var edited: String
-    var url: String
-    
-    init(object: jsonPersonSearchObject.PersonObject ) {
-        self.name = object.name
-        self.height = object.height
-        self.mass = object.mass
-        self.hair_color = object.hair_color
-        self.skin_color = object.skin_color
-        self.eye_color = object.eye_color
-        self.birth_year = object.birth_year
-        self.gender = object.gender
-        self.created = object.created.toDate()
-        self.edited = object.edited.toDate()
-        self.url = object.url
+    let name: String
+    let height: String
+    let mass: String
+    let hairColor: String
+    let skinColor: String
+    let eyeColor: String
+    let birthYear: String
+    let gender: String
+    let homeworld: String?
+    let films: String?
+    let species: String?
+    let vehicles: String?
+    let starships: String?
+    let created: String
+    let edited: String
+    let url: String
+
+    init(_ person: SearchPersonResponse.Person,
+         homeworld: String?,
+         films: [String]?,
+         species: [String]?,
+         vehicles: [String]?,
+         starships: [String]?) {
+        self.name = person.name
+        self.height = person.height
+        self.mass = person.mass
+        self.hairColor = person.hairColor
+        self.skinColor = person.skinColor
+        self.eyeColor = person.eyeColor
+        self.birthYear = person.birthYear
+        self.gender = person.gender
+        self.created = person.created.toDate()
+        self.edited = person.edited.toDate()
+        self.url = person.url
+
+        self.homeworld = homeworld
+        self.films = (films ?? []).isEmpty ? nil : (films ?? []).joined(separator: ", ")
+        self.species = (species ?? []).isEmpty ? nil : (species ?? []).joined(separator: ", ")
+        self.vehicles = (vehicles ?? []).isEmpty ? nil : (vehicles ?? []).joined(separator: ", ")
+        self.starships = (starships ?? []).isEmpty ? nil : (starships ?? []).joined(separator: ", ")
     }
-    
+
     init(data: PersonData) {
         self.name = data.name ?? "error"
         self.height = data.height ?? "error"
         self.mass = data.mass ?? "error"
-        self.hair_color = data.hair_color ?? "error"
-        self.skin_color = data.skin_color ?? "error"
-        self.eye_color = data.eye_color ?? "error"
-        self.birth_year = data.birth_year ?? "error"
+        self.hairColor = data.hairColor ?? "error"
+        self.skinColor = data.skinColor ?? "error"
+        self.eyeColor = data.eyeColor ?? "error"
+        self.birthYear = data.birthYear ?? "error"
         self.gender = data.gender ?? "error"
-        self.homeworld = data.homeworld ?? "error"
-        self.films = data.films ?? "error"
-        self.species = data.spiecies ?? "error"
-        self.vehicles = data.vehicles ?? "error"
-        self.starships = data.starships ?? "error"
+        self.homeworld = data.homeworld
+        self.films = data.films
+        self.species = data.spiecies
+        self.vehicles = data.vehicles
+        self.starships = data.starships
         self.created = data.created ?? "error"
         self.edited = data.edited ?? "error"
         self.url = data.url ?? "error"
-    }
-    
-}
-
-extension String {
-    func toDate(withFormat format: String = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ") -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        guard let date = dateFormatter.date(from: self) else {
-            return self
-        }
-        return date.asString(style: .long)
-    }
-}
-
-extension Date {
-    func asString(style: DateFormatter.Style) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = style
-        return dateFormatter.string(from: self)
     }
 }

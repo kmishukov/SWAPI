@@ -8,76 +8,104 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
+final class LaunchViewController: UIViewController {
+    private let swImage = UIImageView(frame: .zero)
+    private let topTitle = UILabel()
+    private let bottomTitle = UILabel()
 
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var logoCenterYcon: NSLayoutConstraint!
-    let highTitle = UILabel()
-    let lowTitle = UILabel()
-    fileprivate var highConstraint: NSLayoutConstraint?
-    fileprivate var lowConstraint: NSLayoutConstraint?
-    
-    
+// MARK: - Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .swapiBackground
+        setupViews()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        configureView()
-    }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         fadeInTitles()
     }
-    
-    func configureView(){
-        highTitle.translatesAutoresizingMaskIntoConstraints = false
-        highTitle.text = "STAR WARS"
-        highTitle.font = UIFont(name: "DeathStar", size: 40)
-        highTitle.textColor = UIColor.swapiYellow
-        view.addSubview(highTitle)
-        highTitle.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor, constant: -150).isActive = true
-        highConstraint = highTitle.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor, constant: -400)
-        highConstraint?.isActive = true
-        highTitle.alpha = 1
-        
-        lowTitle.translatesAutoresizingMaskIntoConstraints = false
-        lowTitle.numberOfLines = 0
-        lowTitle.textAlignment = .center
-        lowTitle.text = "API"
-        lowTitle.font = UIFont(name: "DeathStar", size: 40)
-        lowTitle.textColor = UIColor.swapiYellow
-        view.addSubview(lowTitle)
-        lowTitle.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor, constant: 180).isActive = true
-        lowConstraint = lowTitle.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor, constant: 400)
-        lowConstraint?.isActive = true
-        lowTitle.alpha = 1
-    }
-    
-    func fadeInTitles(){
-        UIView.animate(withDuration: 0.5) {
-            self.lowConstraint?.constant = 0
-            self.highConstraint?.constant = 0
-            self.view.layoutIfNeeded()
-        }
-        let _ = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(fadeOutTitles), userInfo: nil, repeats: false)
-    }
-    
-    @objc func fadeOutTitles(){
-        UIView.animate(withDuration: 0.5, animations: {
-            self.lowConstraint?.constant = -400
-            self.highConstraint?.constant = 400
-            self.view.layoutIfNeeded()
-        }) { (true) in
-            UIView.animate(withDuration: 0.5, animations: {
-                self.logoCenterYcon.constant = -800
-                self.view.layoutIfNeeded()
-            }, completion: { (true) in
-                self.performSegue(withIdentifier: "launch", sender: self)
-            })
-        }
-    }
-    
-    
-}
 
+    private func setupViews() {
+        swImage.image = UIImage(named: "stormtrooper")
+        view.addSubview(swImage)
+        swImage.snp.makeConstraints {
+            $0.size.equalTo(CGSize(width: 100, height: 100))
+            $0.center.equalTo(view)
+        }
+
+        topTitle.translatesAutoresizingMaskIntoConstraints = false
+        topTitle.text = "STAR WARS"
+        topTitle.font = UIFont(name: "DeathStar", size: 40)
+        topTitle.textColor = UIColor.swapiYellow
+        view.addSubview(topTitle)
+        topTitle.snp.makeConstraints {
+            $0.bottom.equalTo(swImage.snp.top).inset(-40)
+            $0.centerX.equalTo(view).offset(-400)
+        }
+
+        bottomTitle.translatesAutoresizingMaskIntoConstraints = false
+        bottomTitle.numberOfLines = 0
+        bottomTitle.textAlignment = .center
+        bottomTitle.text = "API"
+        bottomTitle.font = UIFont(name: "DeathStar", size: 40)
+        bottomTitle.textColor = UIColor.swapiYellow
+        view.addSubview(bottomTitle)
+        bottomTitle.snp.makeConstraints {
+            $0.top.equalTo(swImage.snp.bottom).inset(-40)
+            $0.centerX.equalTo(view).offset(400)
+        }
+    }
+
+// MARK: - Private
+
+    private func fadeInTitles() {
+        topTitle.snp.updateConstraints {
+            $0.centerX.equalTo(view)
+        }
+        bottomTitle.snp.updateConstraints {
+            $0.centerX.equalTo(view)
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+        var _ = Timer.scheduledTimer(timeInterval: 2,
+                                     target: self,
+                                     selector: #selector(fadeOutTitles),
+                                     userInfo: nil,
+                                     repeats: false)
+    }
+
+    @objc
+    private func fadeOutTitles() {
+        topTitle.snp.updateConstraints {
+            $0.centerX.equalTo(view).offset(400)
+        }
+        bottomTitle.snp.updateConstraints {
+            $0.centerX.equalTo(view).offset(-400)
+        }
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { _ in
+            self.swImage.snp.updateConstraints {
+                $0.centerY.equalTo(self.view).offset(-1000)
+            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                if let delegate = UIApplication.shared.delegate as? AppDelegate,
+                   let window = delegate.window {
+                    let mainVC = MainViewController()
+                    let navigation = UINavigationController(rootViewController: mainVC)
+                    window.rootViewController = navigation
+                    let options: UIView.AnimationOptions = .transitionCrossDissolve
+                    let duration: TimeInterval = 0.3
+                    UIView.transition(with: window,
+                                      duration: duration,
+                                      options: options,
+                                      animations: {},
+                                      completion: nil)
+                }
+            })
+        })
+    }
+}
