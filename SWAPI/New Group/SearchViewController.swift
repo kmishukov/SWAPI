@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     // Data
     var searchResults: [SearchPersonResponse.Person]? {
         didSet {

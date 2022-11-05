@@ -14,7 +14,7 @@ protocol CustomSearchBarDelegate: class {
     func cancelButtonPressed(on searchBar: CustomSearchBar)
 }
 
-class CustomSearchBar: UIView, UITextFieldDelegate {
+final class CustomSearchBar: UIView, UITextFieldDelegate {
     weak var delegate: CustomSearchBarDelegate?
     let textField = UITextField()
     let cancelBtn = UIButton(type: .system)

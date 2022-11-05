@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterCell: UITableViewCell {
+final class CharacterCell: UITableViewCell {
     static let identifier = "CharacterCell"
     let name = UILabel(frame: .zero)
 

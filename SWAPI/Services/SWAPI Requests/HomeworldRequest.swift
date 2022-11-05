@@ -8,8 +8,8 @@
 
 import Foundation
 
-class HomeworldResponse: Codable {
-    var name: String
+struct HomeworldResponse: Codable {
+    let name: String
 }
 
 extension SWAPI {

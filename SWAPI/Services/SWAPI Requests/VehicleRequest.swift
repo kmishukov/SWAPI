@@ -9,7 +9,7 @@
 import Foundation
 
 struct VehicleResponse: Codable {
-    var name: String
+    let name: String
 }
 
 extension SWAPI {

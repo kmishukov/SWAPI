@@ -9,20 +9,20 @@
 import Foundation
 
 struct FilmResponse: Codable {
-    var title: String
-    var episode_id: Int
-    var opening_crawl: String
-    var director: String
-    var producer: String
-    var release_date: String
-    var characters: [String]
-    var planets: [String]
-    var starships: [String]
-    var vehicles: [String]
-    var species: [String]
-    var created: String
-    var edited: String
-    var url: String
+    let title: String
+    let episode_id: Int
+    let opening_crawl: String
+    let director: String
+    let producer: String
+    let release_date: String
+    let characters: [String]
+    let planets: [String]
+    let starships: [String]
+    let vehicles: [String]
+    let species: [String]
+    let created: String
+    let edited: String
+    let url: String
 }
 
 extension SWAPI {

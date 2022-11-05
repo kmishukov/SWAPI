@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DataController: NSObject {
+final class DataController: NSObject {
     static let personEntity = "PersonData"
 
     static func getContext() -> NSManagedObjectContext {

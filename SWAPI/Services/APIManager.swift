@@ -8,28 +8,22 @@
 
 import Foundation
 
-public struct ApiReturn {
-    public var error: NSError?
-    public var data: Data?
-    public var response: URLResponse?
+struct ApiReturn {
+    let error: NSError?
+    let data: Data?
+    let response: URLResponse?
 }
 
-class APIManager {
+final class APIManager {
     static func networkRequest(url: String, parameter: String?, completion: @escaping (ApiReturn) -> Void) {
-        var recieved = ApiReturn()
         HTTPRequest.request(url: url, parameter: parameter) { (data, response, error) in
-            recieved.data = data
-            recieved.response = response
-            if let error = error {
-                recieved.error = error as NSError
-            }
-            completion(recieved)
+            completion(ApiReturn(error: error as? NSError, data: data, response: response))
         }
     }
 }
 
-class HTTPRequest {
-    class func request(url: String,
+final class HTTPRequest {
+    static func request(url: String,
                        parameter: String?,
                        completion: @escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
         var urlString = ""

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LaunchViewController: UIViewController {
+final class LaunchViewController: UIViewController {
     private let swImage = UIImageView(frame: .zero)
     private let topTitle = UILabel()
     private let bottomTitle = UILabel()

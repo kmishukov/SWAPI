@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MainViewController: BaseViewController {
+final class MainViewController: BaseViewController {
 
     private var resultsController: NSFetchedResultsController<PersonData> = {
         let request = NSFetchRequest<PersonData>(entityName: DataController.personEntity)

@@ -34,7 +34,7 @@ struct SearchPersonResponse: Decodable {
     }
 }
 
-class SWAPI {
+final class SWAPI {
     static private let searchURL = "https://swapi.dev/api/people/?search="
 
     static func searchPerson(forString string: String, completion: @escaping ([SearchPersonResponse.Person]?) -> Void) {

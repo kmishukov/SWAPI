@@ -9,7 +9,7 @@
 import Foundation
 
 struct StarshipResponse: Codable {
-    var name: String
+    let name: String
 }
 
 extension SWAPI {
