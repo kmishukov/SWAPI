@@ -139,8 +139,8 @@
 				1D0D232421BD87C000F6AAD5 /* Model */,
 				1D430BA821B9C45600EE2B9A /* Views */,
 				1D430BA721B9C13600EE2B9A /* Controllers */,
-				1D0B908C21B9BD9E002D8793 /* Info.plist */,
 				1D0B90B121B9C0F6002D8793 /* Supporting Files */,
+				1D0B908C21B9BD9E002D8793 /* Info.plist */,
 			);
 			path = SWAPI;
 			sourceTree = "<group>";

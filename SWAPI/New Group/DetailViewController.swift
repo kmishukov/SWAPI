@@ -103,7 +103,7 @@ class DetailViewController: UIViewController {
 
     }
     
-    /// Sync method of getting multiple details of a person.
+    /// Method of getting multiple details of a person using groups.
     /// - Parameters:
     ///   - pobject: Person object with URLs in its properties.
     ///   - completion: Returns an optional Person object with filled properties.
@@ -116,9 +116,9 @@ class DetailViewController: UIViewController {
         }
     }
     
-    /// Async method of getting multiple details of a person.
+    /// Method of getting multiple details of a person using async/await.
     /// - Parameter responsePerson: Person object with URLs in its properties.
-    /// - Returns: Person object with filled properties.
+    /// - Returns: An optional Person object with filled properties.
     func downloadDetails(responsePerson: SearchPersonResponse.Person) async -> Person? {
         textLabel.alpha = 0
         activityIndicator.startAnimating()
