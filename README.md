@@ -1,7 +1,7 @@
 # SWAPI Test Task
 > I wrote this app back in 2019, but did some updates to code in Novermber 2022.
 >
-> Unfortulately swapi.co is not maintained anymore, app is using swapi.dev now.
+> Unfortunately swapi.co is not maintained anymore, app is using swapi.dev now.
 
 ### Application that interacts with SWAPI.com API
 
